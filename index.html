@@ -2,13 +2,49 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="assets/css/reset.css">
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/style.css">
+	
 	<title>Grateful Dead Hangman</title>
+	<script>
+
+  	var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
+  						 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
+  						 "MONEY FOR GASOLINE", "BOB DYLAN", 
+  						 "WHEN I PAINT MY MASTERPIECE", "ESTIMATED PROPHET",
+  						 "EYES OF THE WORLD", "CHINA CAT SUNFLOWER",
+  						 "VINCE WELNICK", "BRUCE HORNSBY", "DARK STAR",
+  						 "AOXOMOXOA", "AMERICAN BEAUTY", "DONNA JEAN GODCHAUX",
+  						 "RIPPLE", "COMES A TIME", "BLACK MUDDY RIVER",
+  						 "BRENT MYDLAND", "NASSAU COLISEUM", "GREEK THEATRE", "COW PALACE", 
+  						 "GIANTS STADIUM", "SOLDIER FIELD", "HELL IN A BUCKET", "QUINN THE ESKIMO", 
+  						 "FARE THEE WELL", "VIOLA LEE BLUES", "SUGAR MAGNOLIA", "I NEED A MIRACLE",
+  						 "COLD RAIN AND SNOW", "THE WHEEL", ""
+  						 ]
+// Returns a random integer between min (included) and max (excluded)
+// Using Math.round() will give you a non-uniform distribution!
+		function getRandomInt(min, max) {
+  				var puzzleItem = Math.floor(Math.random() * (max - min)) + min;
+				}
+// generate random selector number based on size of puzzleAnswer array
+		//getRandomInt(0, puzzleAnswers.length);
+
+//store that selection in variable 'answer'
+var answer = (puzzleAnswers[getRandomInt(0, puzzleAnswers.length)]);
+console.log(answer);
+
+</script>
 </head>
 <body>
-
+<nav>
+<div class= "container">
 	<h1>Grateful Dead Hangman</h1>
-
-	<p>A hangman game based on the good ole Grateful Dead!</p>
+</div>
+<nav>
+	<p>The game of hangman themed around the good ole Grateful Dead!</p>
 
 <!-- <script src="assets/javascript/game.js"></script>	-->
 
