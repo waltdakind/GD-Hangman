@@ -5,14 +5,14 @@
 	<link rel="stylesheet" href="assets/css/reset.css">
 	
 	<!-- Latest compiled and minified CSS -->
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="assets/css/style.css">
 
 	<!--use object to make this have hints associated with answers -->
-	<title> Grateful Dead Hangman </title>
+	<title> Postcards of the Hanging == Grateful Dead Hangman </title>
 	<script type="text/javascript">
 
 function newPuzzle() {
@@ -34,9 +34,10 @@ function newPuzzle() {
   						 "CORRINA", "PRIDE OF CUCAMONGA", "NEW SPEEDWAY BOOGIE", "ONE MORE SATURDAY NIGHT",
   						 "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
   						 "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
-  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES"
+  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", "TOM CONSTANTEN", "DESOLATION ROW"
   						 ]
 
+$('.btn.danger').button('toggle').addClass('fat')
 //use glyphicons for EYES and FIRE GDTRBFB hints
 //generate a random guess from array
   				var random = Math.floor(Math.random() * (puzzleAnswers.length));
@@ -44,33 +45,45 @@ function newPuzzle() {
 		//get rid of next line or the answer is visible in console
 				console.log(puzzleItem);
 }
+//call newPuzzle for a new puzzleItem
 newPuzzle();
 
 
-
+<!-- <script src="assets/javascript/game.js"></script>	-->
 </script>
 </head>
 <body>
 <nav>
+
+</nav>
+<<div class="jumbotron">
+<div class = "row">
+<div class= "col-md-4">
 <div class= "container">
-	<h1> <span class="glyphicon glyphicon-flash"></span> Grateful Dead Hangman <span class="glyphicon glyphicon-flash"></span></h1>
+
+
+	<h1> <div class = "row"><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span>
+	</div>Grateful Dead <wbr>Hangman <div class = "row"><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span></div></h1>
+		<p>
+			<p>The game of hangman themed around the good ole Grateful Dead!</p>
+			<a class="btn btn-danger btn-lg" onclick="newPuzzle()">Start Game</a>
+
+		</p>
+	</div>
 </div>
-<nav>
-	<p>The game of hangman themed around the good ole Grateful Dead!</p>
-
-<!-- <script src="assets/javascript/game.js"></script>	-->
-
+</div>
+<div class= "col-md-6">
 <form id="hangman">
 
 <p id="puzzleProgress"></p>
-
+</div>
 <div class = "container">
 <div class = "row">
 <div class = "col-md-3">
-</div>
-<div class = "col-md-6">
+</div>	
+<!--<div class = "col-md-6">
 	<button id="restart" name="hint" type="button">Hint</button>
-    <button id="restart" name="restart" type="button">Restart</button>
+    <button id="restart" name="restart" type="button">Restart</button> -->
 </form>
 <ul>
 <li id = "letters"> </li></ul>
@@ -79,8 +92,8 @@ newPuzzle();
 </div>
 <div class = "sidebar">
 <div class = "col-md-3">
-	
-</div>	
+<p>Content Holder</p>	
+
 </div>
 </div>
 </body>

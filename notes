@@ -1,0 +1,18 @@
+//PuzzleItem.split('').forEach( function() {result += '_';});
+
+
+//pseudo code
+
+
+
+//theming
+
+
+//guess letter 
+
+	//send to bad guess and make unable to be guessed again
+	// push the bad guess to array of poor choices
+
+	//evaluate good guesses and update puzzle
+	// diallow further guesses of any (good or bad) former choice
+

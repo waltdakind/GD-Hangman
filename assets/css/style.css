@@ -1,19 +1,29 @@
+html, body {
+height : 100%;
+font-family : 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+color : #ffffff;
+background-image : url(../images/syf128.jpg);
+}
 body {
-	color: white;
-	background-color: darkblue;
+	color: darkblue;
+	background-color: white;
 
 }
 h1 {
 	align-text: center;
-	color: red;
+	background-color: white;
+	color: darkblue;
 		font-size: 32px;
 	font-weight: bolder;
 }
 button {
-	color:red;
+	color: yellow;
+	background-color: red;
+	font-weight: bolder;
 }
 nav {
 	text-align: center;
+	background-color: red;
 }
  .letter {
     display: inline-block;
@@ -24,6 +34,18 @@ nav {
     text-align: center;
     color: white;
 }
+span.glyphicon.red {
+color: red;
+}
+span.glyphicon.blue {
+color: blue;
+}
 .puzzleItem {
     list-style: none;
+}
+.sidebar {
+	background-color: white;
+	color: darkblue;
+	font-size: 32px;
+	font-weight: bolder;	
 }
