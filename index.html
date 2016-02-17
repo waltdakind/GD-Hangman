@@ -5,12 +5,17 @@
 	<link rel="stylesheet" href="assets/css/reset.css">
 	
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="assets/css/style.css">
-	
-	<title>Grateful Dead Hangman</title>
-	<script>
 
+	<!--use object to make this have hints associated with answers -->
+	<title> Grateful Dead Hangman </title>
+	<script type="text/javascript">
+
+function newPuzzle() {
   	var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
   						 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
   						 "MONEY FOR GASOLINE", "BOB DYLAN", 
@@ -22,26 +27,33 @@
   						 "BRENT MYDLAND", "NASSAU COLISEUM", "GREEK THEATRE", "COW PALACE", 
   						 "GIANTS STADIUM", "SOLDIER FIELD", "HELL IN A BUCKET", "QUINN THE ESKIMO", 
   						 "FARE THEE WELL", "VIOLA LEE BLUES", "SUGAR MAGNOLIA", "I NEED A MIRACLE",
-  						 "COLD RAIN AND SNOW", "THE WHEEL", ""
+  						 "COLD RAIN AND SNOW", "THE WHEEL", "EYES OF THE WORLD", "FIRE ON THE MOUNTAIN",
+  						 "GOING DOWN THE ROAD FEELING BAD", "SHAKEDOWN STREET", "LOOSE LUCY", "CHINA DOLL",
+  						 "SHIP OF FOOLS", "BRANFORD MARSALIS", "CAPITOL THEATRE", "TERRAPIN STATION",
+  						 "SPACE", "WHARF RAT", "EASY ANSWERS", "ALL NEW MINGLEWOOD BLUES", "VICTIM OR THE CRIME",
+  						 "CORRINA", "PRIDE OF CUCAMONGA", "NEW SPEEDWAY BOOGIE", "ONE MORE SATURDAY NIGHT",
+  						 "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
+  						 "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
+  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES"
   						 ]
-// Returns a random integer between min (included) and max (excluded)
-// Using Math.round() will give you a non-uniform distribution!
-		function getRandomInt(min, max) {
-  				var puzzleItem = Math.floor(Math.random() * (max - min)) + min;
-				}
-// generate random selector number based on size of puzzleAnswer array
-		//getRandomInt(0, puzzleAnswers.length);
 
-//store that selection in variable 'answer'
-var answer = (puzzleAnswers[getRandomInt(0, puzzleAnswers.length)]);
-console.log(answer);
+//use glyphicons for EYES and FIRE GDTRBFB hints
+//generate a random guess from array
+  				var random = Math.floor(Math.random() * (puzzleAnswers.length));
+  				var puzzleItem	= puzzleAnswers[random];
+		//get rid of next line or the answer is visible in console
+				console.log(puzzleItem);
+}
+newPuzzle();
+
+
 
 </script>
 </head>
 <body>
 <nav>
 <div class= "container">
-	<h1>Grateful Dead Hangman</h1>
+	<h1> <span class="glyphicon glyphicon-flash"></span> Grateful Dead Hangman <span class="glyphicon glyphicon-flash"></span></h1>
 </div>
 <nav>
 	<p>The game of hangman themed around the good ole Grateful Dead!</p>
@@ -49,12 +61,28 @@ console.log(answer);
 <!-- <script src="assets/javascript/game.js"></script>	-->
 
 <form id="hangman">
+
+<p id="puzzleProgress"></p>
+
+<div class = "container">
+<div class = "row">
+<div class = "col-md-3">
+</div>
+<div class = "col-md-6">
 	<button id="restart" name="hint" type="button">Hint</button>
     <button id="restart" name="restart" type="button">Restart</button>
 </form>
-<ul id="letters"></ul>
+<ul>
+<li id = "letters"> </li></ul>
 <p id="man"></p>
 <p id="output" class="output"></p>
-
+</div>
+<div class = "sidebar">
+<div class = "col-md-3">
+	
+</div>	
+</div>
+</div>
 </body>
 </html>
+

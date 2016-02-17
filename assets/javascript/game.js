@@ -10,51 +10,47 @@
    					'T', 'U', 'V',
     				'W', 'X', 'Y', 
     				'Z'];
+    var alphabetPlaceholder = "___________________"
 //empty array until user makes their guesses 
 
     var lettersGuessed = []
 
  // Behing the tiles that Vanna is turning are the following GD related clues
  // possible addition HINTS and CATEGORIES
-  	var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
-  						 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
-  						 "MONEY FOR GASOLINE", "BOB DYLAN", 
-  						 "WHEN I PAINT MY MASTERPIECE", "ESTIMATED PROPHET",
-  						 "EYES OF THE WORLD", "CHINA CAT SUNFLOWER",
-  						 "VINCE WELNICK", "BRUCE HORNSBY", "DARK STAR",
-  						 "AOXOMOXOA", "AMERICAN BEAUTY", "DONNA JEAN GODCHAUX",
-  						 "RIPPLE", "COMES A TIME", "BLACK MUDDY RIVER",
-  						 "BRENT MYDLAND", "NASSAU COLISEUM", "GREEK THEATRE", "COW PALACE", 
-  						 "GIANTS STADIUM", "SOLDIER FIELD", "HELL IN A BUCKET", "QUINN THE ESKIMO", 
-  						 "FARE THEE WELL", "VIOLA LEE BLUES", "SUGAR MAGNOLIA", "I NEED A MIRACLE"
-  						 ]
+    var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
+               "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
+               "MONEY FOR GASOLINE", "BOB DYLAN", 
+               "WHEN I PAINT MY MASTERPIECE", "ESTIMATED PROPHET",
+               "EYES OF THE WORLD", "CHINA CAT SUNFLOWER",
+               "VINCE WELNICK", "BRUCE HORNSBY", "DARK STAR",
+               "AOXOMOXOA", "AMERICAN BEAUTY", "DONNA JEAN GODCHAUX",
+               "RIPPLE", "COMES A TIME", "BLACK MUDDY RIVER",
+               "BRENT MYDLAND", "NASSAU COLISEUM", "GREEK THEATRE", "COW PALACE", 
+               "GIANTS STADIUM", "SOLDIER FIELD", "HELL IN A BUCKET", "QUINN THE ESKIMO", 
+               "FARE THEE WELL", "VIOLA LEE BLUES", "SUGAR MAGNOLIA", "I NEED A MIRACLE",
+               "COLD RAIN AND SNOW", "THE WHEEL", "EYES OF THE WORLD", "FIRE ON THE MOUNTAIN",
+               "GOING DOWN THE ROAD FEELING BAD", "SHAKEDOWN STREET", "LOOSE LUCY", "CHINA DOLL",
+               "SHIP OF FOOLS", "BRANFORD MARSALIS", "CAPITOL THEATRE", "TERRAPIN STATION",
+               "SPACE", "WHARF RAT", "EASY ANSWERS", "ALL NEW MINGLEWOOD BLUES", "VICTIM OR THE CRIME",
+               "CORRINA", "PRIDE OF CUCAMONGA", "NEW SPEEDWAY BOOGIE", "ONE MORE SATURDAY NIGHT",
+               "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
+               "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
+               "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES"
+               ]
+
 
   		// various counters
   	var guesses = 0;
   	var wins = 0;
   	var losses = 0;
 
-//accept only keys that are
-// between charcode 65 - 90 and 97 - 122 inclusive
-//               	(e.keyCode >= 65 && e.keyCode <= 90) 
-//            		|| (e.keyCode >= 97 && e.keyCode <= 122))
-object.onkeypress=function(); {
-   var key = e.keyCode ? e.keyCode : e.which;
-if ((e.keyCode >= 65 && e.keyCode <= 90)|| (e.keyCode >= 97 && e.keyCode <= 122)) {
-
-//you're pressing a letter and you can play hangman
-// call another function here?
 
 
+ {
 
 
+var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
 
-
-
-
-
-//you're not pressing a letter and I am going to ignore you
-// display something along the lines of, press a letter for your guess
 
 }
 //function called after testing to see if key was in the (unguessed letter of alphabet)

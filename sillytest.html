@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test Goose</title>
+
+	<script>
+
+	//ok so this is profanity laden due to some frustration figuring it out
+	// just need to add onkeypress stuff
+		var theDarnWord = "I AM A Silly Goose";
+		var theSillyStuff = "";
+		var howLongIsTheDarnWord = theDarnWord.length;
+//		alert(howLongIsTheDarnWord);
+for (i =0; i < howLongIsTheDarnWord; i++) {
+
+	var x = theDarnWord.charAt(i);
+
+	//alert(x);
+
+	if(x === " " || x === "/'")
+	{
+	theSillyStuff += x;
+	}
+	else {
+		theSillyStuff += "_";
+	}
+}
+alert(theSillyStuff);
+
+
+
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	<p> test </p>
+</body>
+</html>
