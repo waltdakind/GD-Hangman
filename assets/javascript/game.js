@@ -1,22 +1,20 @@
-  window.onload = function () {
-//Grateful Dead themed hangman
 
-// now i know my abc's
-  	var alphabet = ['A', 'B', 'C', 'D',
-  				 	'E', 'F', 'G',
-   					'H','I', 'J', 'K', 
-   					'L','M', 'N', 'O', 'P', 
-   					'Q', 'R', 'S',
-   					'T', 'U', 'V',
-    				'W', 'X', 'Y', 
-    				'Z'];
-    var alphabetPlaceholder = "___________________"
-//empty array until user makes their guesses 
+  //global variables
+        var x;
+        var i;
+        var j;
+        var playerGuess = "";
+        var puzzleDisplay = "";
+        var puzzlePlaceholder= [];
+        var puzzleItem  = "";
+        var howLongIspuzzleItem = 0;
+        var guessesUsed = 0;
+        var numberOfWins =0;
+        var puzzleWithBlanks = "";
+        
 
-    var lettersGuessed = []
-
- // Behing the tiles that Vanna is turning are the following GD related clues
- // possible addition HINTS and CATEGORIES
+  //picking a puzzle for the user to guess
+function newPuzzle() {
     var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
                "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
                "MONEY FOR GASOLINE", "BOB DYLAN", 
@@ -35,29 +33,53 @@
                "CORRINA", "PRIDE OF CUCAMONGA", "NEW SPEEDWAY BOOGIE", "ONE MORE SATURDAY NIGHT",
                "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
                "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
-               "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES"
-               ]
+               "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", "TOM CONSTANTEN", "DESOLATION ROW"
+               ];
+var random = Math.floor(Math.random() * puzzleAnswers.length);
+puzzleItem  = puzzleAnswers[random];
+
+              var alphabet = ['A', 'B', 'C', 'D',
+              'E', 'F', 'G',
+              'H','I', 'J', 'K', 
+              'L','M', 'N', 'O', 'P', 
+              'Q', 'R', 'S',
+              'T', 'U', 'V',
+              'W', 'X', 'Y', 
+              'Z'];
+      
+          howLongIspuzzleItem = puzzleItem.length;
+
+$('.btn.danger').button('toggle').addClass('fat')
+
+puzzleDisplay = "";
+for (j = 0; j < howLongIspuzzleItem; j++) {
+
+  x = puzzleItem.charAt(j);
+
+  if(x === " "  || x === "'")
+  {
+  puzzleDisplay +=  x + "&nbsp;&nbsp;";
+  puzzlePlaceholder.push(x);
+  }
+  else {
+    puzzleDisplay += "__&nbsp;";
+    puzzlePlaceholder.push(x);
+    
+}
 
 
-  		// various counters
-  	var guesses = 0;
-  	var wins = 0;
-  	var losses = 0;
-
-
-
- {
-
-
-var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
-
+//var playerGuess = function() {
+//document.onkeyup = function(event) {
+//  playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
+//  if(j < 0) {
+//  alert('You must guess a letter from the alphabet.');
+//  }
+document.getElementById("puzzleWithBlanks").innerHTML =puzzleDisplay;
 
 }
-//function called after testing to see if key was in the (unguessed letter of alphabet)
-
-		//is current guess a new (not guessed before letter)?
-		//convert to uppercase and test to see if it is still in array
-
-//if it's a
-
 };
+
+//function checkGuess() = {
+
+//}
+

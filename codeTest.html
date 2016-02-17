@@ -1,15 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="UTF-8"><!DOCTYPE html>
+<html lang="en">
+<head>
 	<meta charset="UTF-8">
-	<title>Code Snip</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	
+	<!-- Latest compiled and minified CSS -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/css/style.css">
+
+	<!--use object to make this have hints associated with answers -->
+	<title> Postcards of the Hanging == Grateful Dead Hangman </title>
+	<script type="text/javascript">
+	//global variables
+				var x;
+				var i;
+				var j;
+				var playerGuess = "";
+				var puzzleDisplay = "";
+				var puzzlePlaceholder="";
+				var puzzleItem	= "";
+				var howLongIspuzzleItem = 0;
+				var guessesUsed = 0;
+				var numberOfWins =0;
+				var puzzleWithBlanks = "";
+				
+
+	//picking a puzzle for the user to guess
+function newPuzzle() {
+  	var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
+  						 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
+  						 "MONEY FOR GASOLINE", "BOB DYLAN", 
+  						 "WHEN I PAINT MY MASTERPIECE", "ESTIMATED PROPHET",
+  						 "EYES OF THE WORLD", "CHINA CAT SUNFLOWER",
+  						 "VINCE WELNICK", "BRUCE HORNSBY", "DARK STAR",
+  						 "AOXOMOXOA", "AMERICAN BEAUTY", "DONNA JEAN GODCHAUX",
+  						 "RIPPLE", "COMES A TIME", "BLACK MUDDY RIVER",
+  						 "BRENT MYDLAND", "NASSAU COLISEUM", "GREEK THEATRE", "COW PALACE", 
+  						 "GIANTS STADIUM", "SOLDIER FIELD", "HELL IN A BUCKET", "QUINN THE ESKIMO", 
+  						 "FARE THEE WELL", "VIOLA LEE BLUES", "SUGAR MAGNOLIA", "I NEED A MIRACLE",
+  						 "COLD RAIN AND SNOW", "THE WHEEL", "EYES OF THE WORLD", "FIRE ON THE MOUNTAIN",
+  						 "GOING DOWN THE ROAD FEELING BAD", "SHAKEDOWN STREET", "LOOSE LUCY", "CHINA DOLL",
+  						 "SHIP OF FOOLS", "BRANFORD MARSALIS", "CAPITOL THEATRE", "TERRAPIN STATION",
+  						 "SPACE", "WHARF RAT", "EASY ANSWERS", "ALL NEW MINGLEWOOD BLUES", "VICTIM OR THE CRIME",
+  						 "CORRINA", "PRIDE OF CUCAMONGA", "NEW SPEEDWAY BOOGIE", "ONE MORE SATURDAY NIGHT",
+  						 "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
+  						 "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
+  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", "TOM CONSTANTEN", "DESOLATION ROW"
+  						 ];
+var random = Math.floor(Math.random() * puzzleAnswers.length);
+puzzleItem	= puzzleAnswers[random];
+
+  						var alphabet = ['A', 'B', 'C', 'D',
+  						'E', 'F', 'G',
+   						'H','I', 'J', 'K', 
+   						'L','M', 'N', 'O', 'P', 
+   						'Q', 'R', 'S',
+   						'T', 'U', 'V',
+    					'W', 'X', 'Y', 
+    					'Z'];
+
+    			
+  				
+  				howLongIspuzzleItem = puzzleItem.length;
+
+$('.btn.danger').button('toggle').addClass('fat')
+
+
+
+//console.log(puzzleItem);
+//console.log(howLongIspuzzleItem);
+
+puzzleDisplay = "";
+for (j = 0; j < howLongIspuzzleItem; j++) {
+
+	x = puzzleItem.charAt(j);
+
+	//alert(x);
+
+	if(x === " "  || x === "'")
+	{
+	puzzleDisplay +=  x + "&nbsp;&nbsp;";
+	puzzlePlaceholder += x;
+	}
+	else {
+		puzzleDisplay += "__&nbsp;";
+		puzzlePlaceholder += "_";
+		
+}
+
+
+//var playerGuess = function() {
+//document.onkeyup = function(event) {
+//	playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
+//	if(j < 0) {
+//	alert('You must guess a letter from the alphabet.');
+//	}
+document.getElementById("puzzleWithBlanks").innerHTML =puzzleDisplay;
+
+}
+};
+
+function checkGuess() = {
+
+
+
+
+}
+
+
+
+</script>
+</head>
+<body>
+<nav>
+<span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span>
+	<br>Grateful Dead <wbr>Hangman <br><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span></div>
+</nav>
+	<h1> The game of hangman themed around the good ol' Grateful Dead!</h1>
+<br><br><br>
+		
+
+			<a class="btn btn-danger btn-lg" onclick="newPuzzle()">Start New Game</a>
+
+<div class = "container">
+<div class = "row">
+
+	<div class = "col-md-4">
+	Guess a letter in the Grateful Dead related item:	<br> <br>
+	</div>
+
+	<div class= "col-md-8">
+	<p id = "puzzleWithBlanks">Puzzle will appear here.</p>	
+	</div>
+
+
+</div>
+</body>
+</html>
+
+
+	<title>Code Testing</title>
+
 		<!-- Latest compiled and minified CSS -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="assets/css/style.css">
-script
+	<meta charset="UTF-8">
+
+	
+	<!-- Latest compiled and minified CSS -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/css/style.css">
+
+	<!--use object to make this have hints associated with answers -->
+	<title> Postcards of the Hanging == Grateful Dead Hangman </title>
+	<script type="text/javascript">
+
+function newPuzzle() {
+  	var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
+  						 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
+  						 "MONEY FOR GASOLINE", "BOB DYLAN", 
+  						 "WHEN I PAINT MY MASTERPIECE", "ESTIMATED PROPHET",
+  						 "EYES OF THE WORLD", "CHINA CAT SUNFLOWER",
+  						 "VINCE WELNICK", "BRUCE HORNSBY", "DARK STAR",
+  						 "AOXOMOXOA", "AMERICAN BEAUTY", "DONNA JEAN GODCHAUX",
+  						 "RIPPLE", "COMES A TIME", "BLACK MUDDY RIVER",
+  						 "BRENT MYDLAND", "NASSAU COLISEUM", "GREEK THEATRE", "COW PALACE", 
+  						 "GIANTS STADIUM", "SOLDIER FIELD", "HELL IN A BUCKET", "QUINN THE ESKIMO", 
+  						 "FARE THEE WELL", "VIOLA LEE BLUES", "SUGAR MAGNOLIA", "I NEED A MIRACLE",
+  						 "COLD RAIN AND SNOW", "THE WHEEL", "EYES OF THE WORLD", "FIRE ON THE MOUNTAIN",
+  						 "GOING DOWN THE ROAD FEELING BAD", "SHAKEDOWN STREET", "LOOSE LUCY", "CHINA DOLL",
+  						 "SHIP OF FOOLS", "BRANFORD MARSALIS", "CAPITOL THEATRE", "TERRAPIN STATION",
+  						 "SPACE", "WHARF RAT", "EASY ANSWERS", "ALL NEW MINGLEWOOD BLUES", "VICTIM OR THE CRIME",
+  						 "CORRINA", "PRIDE OF CUCAMONGA", "NEW SPEEDWAY BOOGIE", "ONE MORE SATURDAY NIGHT",
+  						 "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
+  						 "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
+  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", "TOM CONSTANTEN", "DESOLATION ROW"
+  						 ];
+  				var random = Math.floor(Math.random() * (puzzleAnswers.length));
+  				var puzzleItem	= puzzleAnswers[random];
+				var i;
+				var j;
+				var k;
+				var playerGuess = "";
+				var puzzleDisplay = "";
+				var puzzlePlaceholder = "";
+				var howLongIspuzzleItem = puzzleItem.length;
+
+
+$('.btn.danger').button('toggle').addClass('fat')
+//use glyphicons for EYES and FIRE GDTRBFB hints
+//generate a random guess from array
+
+		//get rid of next line or the answer is visible in console
+				console.log(puzzleItem);
+}
+
+function = playerGuess() {
+document.onkeyup = function(event) {
+	playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
+ 	j = alphabet.indexOf(playerGuess);
+	//eliminate non-alphabetic choices
+	if(j < 0) {
+		alert('You must guess a letter from the alphabet.')
+	}
+	else if {
+		//loop through length of puzzleItem
+		//if player choice is a match replace underscores in puzzleDisplay
+		//ignoring spaces and correctly guessed letters
+
+		for(k=0; k<puzzleItem.length; k++)  {
+		if (playerGuess === puzzleItem.charAt(k)) {
+
+		}
+	
+		}
+	}
+}
+
+
+
+}
+
+
+
+//call newPuzzle for a new puzzleItem
+newPuzzle();
+
+
+<!-- <script src="assets/javascript/game.js"></script>	-->
+</script>
+</head>
+<body>
+<nav>
+
+</nav>
+<div class = "jumbotron">
+<div class = "row">
+<div class= "col-md-4">
+<div class= "container">
+
+
+	<h1> <div class = "row"><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span>
+	</div>Grateful Dead <wbr>Hangman <div class = "row"><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span></div></h1>
+		<p>
+			<p>The game of hangman themed around the good ol' Grateful Dead!</p>
+			<a class="btn btn-danger btn-lg" onclick="newPuzzle()">Start Game</a>
+
+		</p>
+	</div>
+</div>
+</div>
+<div class= "col-md-6">
+<form id="hangman">
+
+<p id="puzzleProgress"></p>
+</div>
+<div class = "container">
+<div class = "row">
+<div class = "col-md-3">
+</div>	
+<!--<div class = "col-md-6">
+	<button id="restart" name="hint" type="button">Hint</button>
+    <button id="restart" name="restart" type="button">Restart</button> -->
+</form>
+<ul>
+<li id = "letters"> </li></ul>
+<p id="man"></p>
+<p id="output" class="output"></p>
+</div>
+<div class = "sidebar">
+<div class = "col-md-3">
+<p></p>	
+
+</div>
+</div>
+</body>
+</html>
+
+
+
+
+</script>
 </head>
 
 <body>

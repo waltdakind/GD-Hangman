@@ -14,8 +14,26 @@
 	<!--use object to make this have hints associated with answers -->
 	<title> Postcards of the Hanging == Grateful Dead Hangman </title>
 	<script type="text/javascript">
+	//global variables
+				var x;
+				var i;
+				var j;
+				var alreadyGuessed = [];
+				var puzzleDisplay = "";
+				var puzzlePlaceholder= [];
+				var puzzleItem	= "";
+				var howLongIspuzzleItem = 0;
+				var guessesUsed = 0;
+				var numberOfWins =0;
+				var puzzleWithBlanks = "";
+				
 
+	//picking a puzzle for the user to guess
 function newPuzzle() {
+	puzzleItem = "";
+	guessesUsed = 0;
+	alreadyGuessed = [];
+	puzzlePlaceholder= [];
   	var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
   						 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
   						 "MONEY FOR GASOLINE", "BOB DYLAN", 
@@ -35,66 +53,103 @@ function newPuzzle() {
   						 "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
   						 "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
   						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", "TOM CONSTANTEN", "DESOLATION ROW"
-  						 ]
+  						 ];
+var random = Math.floor(Math.random() * puzzleAnswers.length);
+puzzleItem	= puzzleAnswers[random];
+
+  						var alphabet = ['A', 'B', 'C', 'D',
+  						'E', 'F', 'G',
+   						'H','I', 'J', 'K', 
+   						'L','M', 'N', 'O', 'P', 
+   						'Q', 'R', 'S',
+   						'T', 'U', 'V',
+    					'W', 'X', 'Y', 
+    					'Z'];
+			
+  				howLongIspuzzleItem = puzzleItem.length;
 
 $('.btn.danger').button('toggle').addClass('fat')
-//use glyphicons for EYES and FIRE GDTRBFB hints
-//generate a random guess from array
-  				var random = Math.floor(Math.random() * (puzzleAnswers.length));
-  				var puzzleItem	= puzzleAnswers[random];
-		//get rid of next line or the answer is visible in console
-				console.log(puzzleItem);
+
+puzzleDisplay = "";
+for (j = 0; j < howLongIspuzzleItem; j++) {
+
+	x = puzzleItem.charAt(j);
+
+	if(x === " "  || x === "'")
+	{
+	puzzleDisplay +=  x + "&nbsp;&nbsp;";
+	puzzlePlaceholder.push(x);
+	}
+	else {
+		puzzleDisplay += "__&nbsp;";
+		puzzlePlaceholder.push(x);
+		
 }
-//call newPuzzle for a new puzzleItem
-newPuzzle();
+console.log(puzzleItem);
+document.getElementById("puzzleWithBlanks").innerHTML =puzzleDisplay;
+
+playerChoice = function() {
+document.onkeyup = function(event) {
+var puzzleDisplay = "";
+var playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
+//make sure choice is a letter and not chosen before
+if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) === -1) {
+	if(puzzlePlaceholder.indexOf(playerGuess)=== -1) {
+		guessesUsed+=guessesUsed
+		alert('That letter is not in the puzzle');
+		alreadyGuessed.push(playerGuess);
+
+	}
+	else {
+		alert('That letter is in the puzzle');
+		alreadyGuessed.push(playerGuess);
+		//remove underscore
+		for(k=0;k<puzzlePlaceholder.length;k++) {
+			if(alreadyGuessed.indexOf(playerGuess)===1) {
+
+				puzzleDisplay += puzzlePlaceholder[k];
+			}
+		}
+	}
+}
+
+document.getElementById("puzzleWithBlanks").innerHTML =puzzleDisplay;
+
+}
+}
+}
+playerChoice();
+};
 
 
-<!-- <script src="assets/javascript/game.js"></script>	-->
-</script>
-</head>
+	</script>
+
+	</head>
 <body>
-<nav>
+	<nav>
+			<span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span>
+			<br>Grateful Dead <wbr>Hangman <br><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span></div>
+	</nav>
 
-</nav>
-<<div class="jumbotron">
-<div class = "row">
-<div class= "col-md-4">
-<div class= "container">
+	<h1> The game of hangman themed around the good ol' Grateful Dead!</h1>
 
+<br><br><br>
+		
 
-	<h1> <div class = "row"><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span>
-	</div>Grateful Dead <wbr>Hangman <div class = "row"><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span></div></h1>
-		<p>
-			<p>The game of hangman themed around the good ole Grateful Dead!</p>
-			<a class="btn btn-danger btn-lg" onclick="newPuzzle()">Start Game</a>
+			<a class="btn btn-danger btn-lg" onclick="newPuzzle()">Start New Game</a>
 
-		</p>
-	</div>
-</div>
-</div>
-<div class= "col-md-6">
-<form id="hangman">
-
-<p id="puzzleProgress"></p>
-</div>
 <div class = "container">
 <div class = "row">
-<div class = "col-md-3">
-</div>	
-<!--<div class = "col-md-6">
-	<button id="restart" name="hint" type="button">Hint</button>
-    <button id="restart" name="restart" type="button">Restart</button> -->
-</form>
-<ul>
-<li id = "letters"> </li></ul>
-<p id="man"></p>
-<p id="output" class="output"></p>
-</div>
-<div class = "sidebar">
-<div class = "col-md-3">
-<p>Content Holder</p>	
 
-</div>
+	<div class = "col-md-4">
+	Guess a letter in the Grateful Dead related item by clicking start new game and pressing a letter on your keyboard:	<br> <br>
+	</div>
+
+	<div class= "col-md-8">
+	<p id = "puzzleWithBlanks">Puzzle will appear here.</p>	
+	</div>
+
+
 </div>
 </body>
 </html>
