@@ -18,22 +18,25 @@
 				var x;
 				var i;
 				var j;
+				var k;
 				var alreadyGuessed = [];
-				var puzzleDisplay = "";
-				var puzzlePlaceholder= [];
+				var puzzleUnderscores = [];
+				var puzzleLetters= [];
 				var puzzleItem	= "";
 				var howLongIspuzzleItem = 0;
 				var guessesUsed = 0;
 				var numberOfWins =0;
 				var puzzleWithBlanks = "";
+				var currentWordState = [];
 				
+				var index =[];
 
 	//picking a puzzle for the user to guess
 function newPuzzle() {
 	puzzleItem = "";
 	guessesUsed = 0;
 	alreadyGuessed = [];
-	puzzlePlaceholder= [];
+	puzzleLetters= [];
   	var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
   						 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
   						 "MONEY FOR GASOLINE", "BOB DYLAN", 
@@ -66,60 +69,137 @@ puzzleItem	= puzzleAnswers[random];
     					'W', 'X', 'Y', 
     					'Z'];
 			
-  				howLongIspuzzleItem = puzzleItem.length;
+  				
 
 $('.btn.danger').button('toggle').addClass('fat')
 
-puzzleDisplay = "";
+howLongIspuzzleItem = puzzleItem.length;
+puzzleUnderscores = [];
 for (j = 0; j < howLongIspuzzleItem; j++) {
 
 	x = puzzleItem.charAt(j);
 
 	if(x === " "  || x === "'")
 	{
-	puzzleDisplay +=  x + "&nbsp;&nbsp;";
-	puzzlePlaceholder.push(x);
+	puzzleUnderscores.push(x + "&nbsp;&nbsp;");
+	currentWordState.push(x + "&nbsp;&nbsp;");
+	puzzleLetters.push(x + "&nbsp;&nbsp;");
 	}
 	else {
-		puzzleDisplay += "__&nbsp;";
-		puzzlePlaceholder.push(x);
+		puzzleUnderscores.push("__&nbsp;");
+		currentWordState.push("__&nbsp;");
+		puzzleLetters.push(x);
 		
 }
+}
+console.log(puzzleUnderscores.length);
 console.log(puzzleItem);
-document.getElementById("puzzleWithBlanks").innerHTML =puzzleDisplay;
+console.log(puzzleUnderscores);
+console.log(currentWordState);
+console.log(puzzleLetters);
+
+
+//for loop to run through array
+for(i=0; i < puzzleUnderscores.length; i++) {
+	currentWordState += puzzleUnderscores[i];
+}
+
+document.getElementById("puzzleWithBlanks").innerHTML =currentWordState;
 
 playerChoice = function() {
+//takes user input from keypress
 document.onkeyup = function(event) {
-var puzzleDisplay = "";
+
+var puzzleUnderscores = "";
+
 var playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
 //make sure choice is a letter and not chosen before
 if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) === -1) {
-	if(puzzlePlaceholder.indexOf(playerGuess)=== -1) {
+	if(puzzleLetters.indexOf(playerGuess)=== -1) {
 		guessesUsed+=guessesUsed
 		alert('That letter is not in the puzzle');
 		alreadyGuessed.push(playerGuess);
-
+//close 1st condition
 	}
 	else {
-		alert('That letter is in the puzzle');
-		alreadyGuessed.push(playerGuess);
-		//remove underscore
-		for(k=0;k<puzzlePlaceholder.length;k++) {
-			if(alreadyGuessed.indexOf(playerGuess)===1) {
+		alert('That letter is in the puzzle');		
+		for(k=0;k<puzzleUnderscores.length;k++) {
 
-				puzzleDisplay += puzzlePlaceholder[k];
+			var correctLetterLocations = getAllIndexes(puzzleLetters, playerGuess);
+			
+			var index = correctLetterLocations;
+			console.log(index);
+			//case 1 --already a letter in puzzleUnderscores = do nothing
+			if(puzzleUnderscores[k] != "__&nbsp;") {
+				//doing nothing -- hi!
+			console.log("case1 happened");
 			}
+			//case 2--is an underscore now but was just correctly guessed -- change to playerGuess
+			else if(puzzleUnderscores[k] === "__&nbsp;" && puzzleLetters[k] === playerGuess) {
+				//flip the display Vanna!
+				puzzleUnderscores[k] = playerGuess;
+				console.log("case2 attempting to run flipTheLetter");
+				flipTheLetter();
+			}
+
+			//case 3 -- is an underscore and was not correctly guessed yet -- do nothing
+			else {
+				// more of nothing -- placeholder for my logic
+				console.log("case3 is this thing even working?");
+			//	flipTheLetter();
+			}
+//close the for loop with k
 		}
-	}
-}
 
-document.getElementById("puzzleWithBlanks").innerHTML =puzzleDisplay;
+			// don't need this ( i don't think): leaving next line just in case
+			//puzzleUnderscores[index] = puzzleLetters[index] ;
 
+// close else scenario
+			}
+
+			//correctLetterLocations is identifying indexes successfully
+			//console.log(correctLetterLocations);
+
+		alreadyGuessed.push(playerGuess);	
+			
+			//console.log(alreadyGuessed);
+
+//problem here currentWordState is blank
+
+			//currentWordState = currentWordState + puzzleLetters[i];
+			//};
+			var flipTheLetter = function() {
+			howLongIspuzzleItem = puzzleUnderscores.length;
+			for (j = 0; j < howLongIspuzzleItem; j++) {
+			x = puzzleUnderscores[j];
+			currentWordState.push(x);
+			}
+			}
 }
+			
+			console.log(currentWordState);
+			document.getElementById("puzzleWithBlanks").innerHTML =currentWordState;
+	
+
+//close on.key up
+		}
+function getAllIndexes(arr, val) {
+    var indexes = [], i;
+    for(i = 0; i < arr.length; i++)
+        if (arr[i] === val)
+            indexes.push(i);
+    return indexes;
 }
+//close getAllIndexes function
 }
+document.getElementById("puzzleWithBlanks").innerHTML =puzzleUnderscores;
 playerChoice();
+
 };
+//close function event
+
+
+
 
 
 	</script>
@@ -153,4 +233,3 @@ playerChoice();
 </div>
 </body>
 </html>
-
