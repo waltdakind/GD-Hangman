@@ -20,6 +20,10 @@
 				var j;
 				var k;
 				var alreadyGuessed = [];
+				var alphabet = ['A', 'B', 'C', 'D',
+  				'E', 'F', 'G','H','I', 'J', 'K', 
+   				'L','M', 'N', 'O', 'P', 'Q', 'R', 'S',
+   				'T', 'U', 'V','W', 'X', 'Y','Z'];
 
 				var puzzleUnderscores = [];
 				var currentWordState = [];
@@ -33,6 +37,7 @@
 				var numberOfWins =0;
 
 
+
 	//picking a puzzle for the user to guess
 function newPuzzle() {
 	//string for the puzzle
@@ -41,7 +46,7 @@ function newPuzzle() {
 	currentWordState = [];
 	puzzleLetters = [];
 	//number of guesses
-	guessesUsed = 0;
+	livesRemaining = 8;
 	//letters already guessed
 	alreadyGuessed = [];
 	//letters in the puzzle
@@ -64,21 +69,77 @@ function newPuzzle() {
   						 "CORRINA", "PRIDE OF CUCAMONGA", "NEW SPEEDWAY BOOGIE", "ONE MORE SATURDAY NIGHT",
   						 "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
   						 "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
-  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", "TOM CONSTANTEN", "DESOLATION ROW"
+  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", 
+  						 "TOM CONSTANTEN", "DESOLATION ROW", "ALABAMA GETAWAY", "MEXICALI BLUES", "BOX OF RAIN",
+  						 "CATFISH JOHN", "STAGGER LEE", "SAINT STEPHEN", "All Along the Watchtower",
+								"AROUND AND AROUND",
+								"BALLAD OF A THIN MAN",
+								"BEAT IT ON DOWN THE LINE",
+								"BIG BOSS MAN",
+								"BIG BOY PETE",
+								"BIG RAILROAD BLUES",
+								"BIG RIVER",
+								"BROKEN ARROW",
+								"DANCING IN THE STREET",
+								"DAY TRIPPER",
+								"DEAR PRUDENCE",
+								"DEVIL WITH A BLUE DRESS ON",
+								"EARLY MORNING RAIN",
+								"EL PASO",
+								"GLORIA",
+								"GOOD MORNING LITTLE SCHOOL GIRL",
+								"HARD TO HANDLE",
+								"HEY BO DIDDLEY",
+								"HEY JUDE",
+								"I SECOND THAT EMOTION",
+								"IKO IKO",
+								"IN THE MIDNIGHT HOUR",
+								"IT HURTS ME TOO",
+								"IT TAKES A LOT TO LAUGH, IT TAKES A TRAIN TO CRY",
+								"JUST LIKE TOM THUMB'S BLUES",
+								"KANSAS CITY",
+								"KEEP ON GROWING",
+								"THE LAST TIME",
+								"LITTLE RED ROOSTER",
+								"LONG BLACK LIMOUSINE",
+								"LUCY IN THE SKY WITH DIAMONDS",
+								"MAGGIE'S FARM",
+								"MAMA TRIED",
+								"ME AND BOBBY MCGEE",
+								"ME AND MY UNCLE",
+								"THE MONKEY AND THE ENGINEER",
+								"MORNING DEW",
+								"NEW MINGLEWOOD BLUES",
+								"NOT FADE AWAY",
+								"THE PROMISED LAND",
+								"QUEEN JANE APPROXIMATELY",
+								"THE RACE IS ON",
+								"RAIN",
+								"REVOLUTION",
+								"THE SAME THING",
+								"SHE BELONGS TO ME",
+								"SING ME BACK HOME",
+								"SMOKESTACK LIGHTNING",
+								"SO WHAT",
+								"STIR IT UP",
+								"STUCK INSIDE OF MOBILE WITH THE MEMPHIS BLUES AGAIN",
+								"TOMORROW IS FOREVER",
+								"TOMORROW NEVER KNOWS",
+								"TURN ON YOUR LOVE LIGHT",
+								"VISIONS OF JOHANNA",
+								"WAKE UP LITTLE SUSIE",
+								"WALKING THE DOG",
+								"WANG DANG DOODLE",
+								"THE WEIGHT",
+								"WEREWOLVES OF LONDON",
+								"YOU DON'T LOVE ME",
+								"YOU WIN AGAIN",
+								"MYSTERY TRAIN",
+								"Cryptical Envelopment"
   						 ];
 var random = Math.floor(Math.random() * puzzleAnswers.length);
 puzzleItem	= puzzleAnswers[random];
-
-  						var alphabet = ['A', 'B', 'C', 'D',
-  						'E', 'F', 'G',
-   						'H','I', 'J', 'K', 
-   						'L','M', 'N', 'O', 'P', 
-   						'Q', 'R', 'S',
-   						'T', 'U', 'V',
-    					'W', 'X', 'Y', 
-    					'Z'];
 			
-  				
 
 $('.btn.danger').button('toggle').addClass('fat')
 
@@ -124,6 +185,7 @@ document.getElementById("puzzleWithBlanks").innerHTML =theDamnPuzzle;
 //}
 
 //document.getElementById("puzzleWithBlanks").innerHTML =currentWordState;
+};
 
 playerChoice = function() {
 //takes user input from keypress
@@ -140,9 +202,9 @@ if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) =
 
 	
 	if(puzzleLetters.indexOf(playerGuess)=== -1) {
-		guessesUsed+=guessesUsed
+		livesRemaining-=livesRemaining
 // 		alert('That letter is not in the puzzle');
-		alreadyGuessed.push(playerGuess);
+
 //close 1st condition
 	}
 
@@ -151,6 +213,7 @@ if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) =
 		
 		//alert('That letter is in the puzzle');	
 		//splice out underscores and splice in correctly identified letter	
+
 		currentWordState = backup.slice();
 		backup = [];
 		 for(i=0; i<puzzleUnderscores.length; i++) {
@@ -160,12 +223,11 @@ if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) =
 		 	k = puzzleLetters[i];
 		 	console.log(k);
 		 	currentWordState.push(k);
-		 	//alreadyGuessed.push(playerGuess);
 		 	}
 
 		 	else {
 		 	currentWordState.push(puzzleUnderscores[i]);
-		 	alreadyGuessed.push(playerGuess);
+		 	
 		 	}	
 		 }
 
@@ -180,7 +242,8 @@ if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) =
 			var theDamnPuzzle = currentWordState.join('');
 			currentWordState = [];
 			document.getElementById("puzzleWithBlanks").innerHTML =theDamnPuzzle;
-			
+			document.getElementById("usedletters").innerHTML =alreadyGuessed;
+			document.getElementById("livesRemaining").innerHTML =livesRemaining;
 			
 	
 
@@ -194,14 +257,14 @@ function getAllIndexes(arr, val) {
     return indexes;
 
 }
-
+alreadyGuessed.push(playerGuess);
 //close getAllIndexes function
 }
 
 playerChoice();
 
-};
 //close function event
+
 
 
 
@@ -235,7 +298,15 @@ playerChoice();
 	<p id = "puzzleWithBlanks">Puzzle will appear here.</p>	
 	</div>
 	</div>
+<div class = "row">
+<div class = "col-md-6">
+<p>Letters <br>Used:</p>
+<p id = "usedletters"> </p>
+<p>Lives <br>remaining:</p>
+<p id = "livesRemaining"> </p>
 
+</div>
+</div>
 </div>
 </body>
 </html>
