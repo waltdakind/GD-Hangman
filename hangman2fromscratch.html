@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="assets/css/reset.css">
+	
+	<!-- Latest compiled and minified CSS -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/css/style.css">
+
+	<!--use object to make this have hints associated with answers -->
+	<title> Postcards of the Hanging == Grateful Dead Hangman </title>
+	<script type="text/javascript">
+		//global variables
+				var x;
+				var i;
+				var j;
+				var k;
+				var alreadyGuessed = [];
+				var puzzleUnderscores = [];
+				var puzzleLetters= [];
+				var puzzleItem	= "";
+				var howLongIspuzzleItem = 0;
+				var guessesUsed = 0;
+				var numberOfWins =0;
+				var puzzleWithBlanks = "";
+				var currentWordState = [];
+		//object for the possible puzzles
+		var hangmanItems = [
+      {
+         "Puzzle":"BOX OF RAIN",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"ROBERT HUNTER",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"JOHN BARLOW",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"PIGPEN",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"TOUCH OF GREY",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"MONEY FOR GASOLINE",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"BOB DYLAN",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"WHEN I PAINT MY MASTERPIECE",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"ESTIMATED PROPHET",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"EYES OF THE WORLD",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"CHINA CAT SUNFLOWER",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"VINCE WELNICK",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"BRUCE HORNSBY",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"DARK STAR",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"AOXOMOXOA",
+         "Hint":"album"
+      },
+      {
+         "Puzzle":"AMERICAN BEAUTY",
+         "Hint":"album"
+      },
+      {
+         "Puzzle":"DONNA JEAN GODCHAUX",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"RIPPLE",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"COMES A TIME",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"BLACK MUDDY RIVER",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"BRENT MYDLAND",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"NASSAU COLISEUM",
+         "Hint":"venue"
+      },
+      {
+         "Puzzle":"GREEK THEATRE",
+         "Hint":"venue"
+      },
+      {
+         "Puzzle":"COW PALACE",
+         "Hint":"venue"
+      },
+      {
+         "Puzzle":"GIANTS STADIUM",
+         "Hint":"venue"
+      },
+      {
+         "Puzzle":"SOLDIER FIELD",
+         "Hint":"venue"
+      },
+      {
+         "Puzzle":"HELL IN A BUCKET",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"QUINN THE ESKIMO",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"FARE THEE WELL",
+         "Hint":"event"
+      },
+      {
+         "Puzzle":"VIOLA LEE BLUES",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"SUGAR MAGNOLIA",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"I NEED A MIRACLE",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"COLD RAIN AND SNOW",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"THE WHEEL",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"EYES OF THE WORLD",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"FIRE ON THE MOUNTAIN",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"GOING DOWN THE ROAD FEELING BAD",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"SHAKEDOWN STREET",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"LOOSE LUCY",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"CHINA DOLL",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"SHIP OF FOOLS",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"BRANFORD MARSALIS",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"CAPITOL THEATRE",
+         "Hint":"venue"
+      },
+      {
+         "Puzzle":"TERRAPIN STATION",
+         "Hint":"album"
+      },
+      {
+         "Puzzle":"SPACE",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"WHARF RAT",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"EASY ANSWERS",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"ALL NEW MINGLEWOOD BLUES",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"VICTIM OR THE CRIME",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"CORRINA",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"PRIDE OF CUCAMONGA",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"NEW SPEEDWAY BOOGIE",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"ONE MORE SATURDAY NIGHT",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"I KNOW YOU RIDER",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"SAMSON AND DELILAH",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"BERTHA",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"RFK STADIUM",
+         "Hint":"venue"
+      },
+      {
+         "Puzzle":"THE DAYS BETWEEN",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"LIBERTY",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"ME AND MY UNCLE",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"GREATEST STORY EVER TOLD",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"MICKEY HART",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"FOOLISH HEART",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"BILL KREUTZMANN",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"STANDING ON THE MOON",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"CRAZY FINGERS",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"IT MUST HAVE BEEN THE ROSES",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"TOM CONSTANTEN",
+         "Hint":"person"
+      },
+      {
+         "Puzzle":"DESOLATION ROW",
+         "Hint":"song"
+      },
+      {
+         "Puzzle":"GO TO HEAVEN",
+         "Hint":"album"
+      },
+      {
+         "Puzzle":"WAKE OF THE FLOOD",
+         "Hint":"album"
+      },
+      {
+         "Puzzle":"IN THE DARK",
+         "Hint":"album"
+      }
+   ]
+var randomProperty = function (hangmanItems) {
+    var Puzzle = hangmanItems.Puzzle(hangmanItems)
+    return hangmanItems[Puzzle[ Puzzle.length * Math.random() << 0]];
+};
+
+
+				</script>
+</head>
+<body>
+	
+</body>
+</html>

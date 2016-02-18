@@ -29,7 +29,7 @@
 				var puzzleWithBlanks = "";
 				var currentWordState = [];
 				
-				var index =[];
+
 
 	//picking a puzzle for the user to guess
 function newPuzzle() {
@@ -115,7 +115,7 @@ var puzzleUnderscores = "";
 
 var playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
 var correctLetterLocations = getAllIndexes(puzzleLetters, playerGuess);
-console.log(correctLetterLocations);
+//console.log(correctLetterLocations);
 //make sure choice is a letter and not chosen before
 if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) === -1) {
 
@@ -132,8 +132,9 @@ if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) =
 		for(i=0; i< correctLetterLocations.length; i++) {
 		//alert('That letter is in the puzzle');	
 		//splice out underscores and splice in correctly identified letter	
-		 
-		 currentWordState.splice(correctLetterLocations[i], 1, playerGuess);
+		 x = correctLetterLocations[i];
+		 spliceThatUnderscoreOut(currentWordState, x, playerGuess);
+		currentWordState = newarray;
 		}
 			alreadyGuessed.push(playerGuess);
 		
@@ -197,6 +198,12 @@ function getAllIndexes(arr, val) {
         if (arr[i] === val)
             indexes.push(i);
     return indexes;
+
+function spliceThatUnderscoreOut(arr, index, newvalue) {
+		var newarray
+		newarray = arr.splice(index, 1, newvalue);
+		return newarray;
+}
 }
 //close getAllIndexes function
 }

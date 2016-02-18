@@ -63,5 +63,6 @@ color: blue;
 }
 p {
 	white-space: pre;
+	margin-left: 100px;
 
 }
