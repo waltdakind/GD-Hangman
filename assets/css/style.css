@@ -57,6 +57,9 @@ color: blue;
 	font-size: 32px;
 	font-weight: bolder;	
 }
+.sidenav {
+	text-align: center;
+}
 #col {
 	background-color: white;
 	color: darkblue;
@@ -65,7 +68,7 @@ color: blue;
 }
 p {
 	white-space: pre;
-	margin-left: 100px;
+
 
 }
 
