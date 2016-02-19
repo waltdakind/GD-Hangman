@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 
 	<!--use object to make this have hints associated with answers -->
-	<title> Postcards of the Hanging == Grateful Dead Hangman </title>
+	<title> Postcards of the Hanging -- Grateful Dead Hangman </title>
 	<script type="text/javascript">
 	//global variables
 				var x;
@@ -20,22 +20,37 @@
 				var j;
 				var k;
 				var alreadyGuessed = [];
+				var alphabet = ['A', 'B', 'C', 'D',
+  				'E', 'F', 'G','H','I', 'J', 'K', 
+   				'L','M', 'N', 'O', 'P', 'Q', 'R', 'S',
+   				'T', 'U', 'V','W', 'X', 'Y','Z'];
+
 				var puzzleUnderscores = [];
-				var puzzleLetters= [];
+				var currentWordState = [];
+				var puzzleLetters = [];
+				var backup = [];
 				var puzzleItem	= "";
+				
 				var howLongIspuzzleItem = 0;
+				
 				var guessesUsed = 0;
 				var numberOfWins =0;
-				var puzzleWithBlanks = "";
-				var currentWordState = [];
-				
+
 
 
 	//picking a puzzle for the user to guess
+	
 function newPuzzle() {
+	//string for the puzzle
 	puzzleItem = "";
-	guessesUsed = 0;
+	puzzleUnderscores = [];
+	currentWordState = [];
+	puzzleLetters = [];
+	//number of guesses
+	livesRemaining = 8;
+	//letters already guessed
 	alreadyGuessed = [];
+	//letters in the puzzle
 	puzzleLetters= [];
   	var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
   						 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
@@ -55,138 +70,172 @@ function newPuzzle() {
   						 "CORRINA", "PRIDE OF CUCAMONGA", "NEW SPEEDWAY BOOGIE", "ONE MORE SATURDAY NIGHT",
   						 "I KNOW YOU RIDER", "SAMSON AND DELILAH", "BERTHA", "RFK STADIUM", "THE DAYS BETWEEN",
   						 "LIBERTY", "ME AND MY UNCLE", "GREATEST STORY EVER TOLD", "MICKEY HART", "FOOLISH HEART",
-  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", "TOM CONSTANTEN", "DESOLATION ROW"
+  						 "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", 
+  						 "TOM CONSTANTEN", "DESOLATION ROW", "ALABAMA GETAWAY", "MEXICALI BLUES", "BOX OF RAIN",
+  						 "CATFISH JOHN", "STAGGER LEE", "SAINT STEPHEN", "ALL ALONG THE WATCHTOWER","AROUND AND AROUND",
+						"BALLAD OF A THIN MAN",	"BEAT IT ON DOWN THE LINE",
+						"BIG BOSS MAN",	"BIG BOY PETE",	"BIG RAILROAD BLUES",
+								"BIG RIVER",
+								"BROKEN ARROW",
+								"DANCING IN THE STREET",
+								"DAY TRIPPER",
+								"DEAR PRUDENCE",
+								"DEVIL WITH A BLUE DRESS ON",
+								"EARLY MORNING RAIN",
+								"EL PASO",
+								"GLORIA",
+								"GOOD MORNING LITTLE SCHOOL GIRL",
+								"HARD TO HANDLE",
+								"HEY BO DIDDLEY",
+								"HEY JUDE",
+								"I SECOND THAT EMOTION",
+								"IKO IKO",
+								"IN THE MIDNIGHT HOUR",
+								"IT HURTS ME TOO",
+								"IT TAKES A LOT TO LAUGH, IT TAKES A TRAIN TO CRY",
+								"JUST LIKE TOM THUMB'S BLUES",
+								"KANSAS CITY",
+								"KEEP ON GROWING",
+								"THE LAST TIME",
+								"LITTLE RED ROOSTER",
+								"LONG BLACK LIMOUSINE",
+								"LUCY IN THE SKY WITH DIAMONDS",
+								"MAMA TRIED",
+								"ME AND BOBBY MCGEE",
+								"ME AND MY UNCLE",
+								"THE MONKEY AND THE ENGINEER",
+								"MORNING DEW",
+								"NEW MINGLEWOOD BLUES",
+								"NOT FADE AWAY",
+								"THE PROMISED LAND",
+								"QUEEN JANE APPROXIMATELY",
+								"THE RACE IS ON",
+								"RAIN",
+								"REVOLUTION",
+								"THE SAME THING",
+								"SHE BELONGS TO ME",
+								"SING ME BACK HOME",
+								"SMOKESTACK LIGHTNING",
+								"SO WHAT",
+								"STIR IT UP",
+								"STUCK INSIDE OF MOBILE WITH THE MEMPHIS BLUES AGAIN",
+								"TOMORROW IS FOREVER",
+								"TOMORROW NEVER KNOWS",
+								"TURN ON YOUR LOVE LIGHT",
+								"VISIONS OF JOHANNA",
+								"WAKE UP LITTLE SUSIE",
+								"WALKING THE DOG",
+								"WANG DANG DOODLE",
+								"THE WEIGHT",
+								"WEREWOLVES OF LONDON",
+								"YOU DON'T LOVE ME",
+								"YOU WIN AGAIN",
+								"MYSTERY TRAIN",
+								"CRYPTICAL ENVELOPMENT",
+								"GENTLEMEN START YOUR ENGINES"
   						 ];
 var random = Math.floor(Math.random() * puzzleAnswers.length);
 puzzleItem	= puzzleAnswers[random];
-
-  						var alphabet = ['A', 'B', 'C', 'D',
-  						'E', 'F', 'G',
-   						'H','I', 'J', 'K', 
-   						'L','M', 'N', 'O', 'P', 
-   						'Q', 'R', 'S',
-   						'T', 'U', 'V',
-    					'W', 'X', 'Y', 
-    					'Z'];
 			
-  				
 
 $('.btn.danger').button('toggle').addClass('fat')
 
 howLongIspuzzleItem = puzzleItem.length;
-puzzleUnderscores = [];
-for (j = 0; j < howLongIspuzzleItem; j++) {
+//stores the blanks for diplaying new puzzle -- emptying for new puzzle
+//current word is an exact copy for uncovering letters
+//puzzleLetters is the solution without any blanks
 
-	x = puzzleItem.charAt(j);
+
+
+
+//these arrays hold all the stuff to check guesses against and update the display
+for (i = 0; i < howLongIspuzzleItem; i++) {
+
+	x = puzzleItem.charAt(i);
 
 	if(x === " "  || x === "'")
 	{
 	puzzleUnderscores.push(x + "&nbsp;&nbsp;");
-	currentWordState.push(x + "&nbsp;&nbsp;");
+	//currentWordState.push(x + "&nbsp;&nbsp;");
 	puzzleLetters.push(x + "&nbsp;&nbsp;");
 	}
 	else {
-		puzzleUnderscores.push("__&nbsp;");
-		currentWordState.push("__&nbsp;");
+		puzzleUnderscores.push("___&nbsp;");
+		//currentWordState.push("___&nbsp;");
 		puzzleLetters.push(x);
 		
 }
 }
+
 console.log(puzzleUnderscores.length);
 console.log(puzzleItem);
 console.log(puzzleUnderscores);
-console.log(currentWordState);
+//console.log(currentWordState);
 console.log(puzzleLetters);
 
 
-
+var showMeThePuzzle = puzzleUnderscores.join('');
+document.getElementById("puzzleWithBlanks").innerHTML =showMeThePuzzle;
 //for loop to run through array
-for(i=0; i < puzzleUnderscores.length; i++) {
-	currentWordState += puzzleUnderscores[i];
-}
+//for(i=0; i < puzzleUnderscores.length; i++) {
+//	currentWordState += puzzleUnderscores[i];
+//}
 
-document.getElementById("puzzleWithBlanks").innerHTML =currentWordState;
+//document.getElementById("puzzleWithBlanks").innerHTML =currentWordState;
+};
 
 playerChoice = function() {
 //takes user input from keypress
 document.onkeyup = function(event) {
 
-var puzzleUnderscores = "";
-
 var playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
+
 var correctLetterLocations = getAllIndexes(puzzleLetters, playerGuess);
+showMeThePuzzle = "";
+currentWordState = [];
 //console.log(correctLetterLocations);
 //make sure choice is a letter and not chosen before
 if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) === -1) {
 
 	
 	if(puzzleLetters.indexOf(playerGuess)=== -1) {
-		guessesUsed+=guessesUsed
+		livesRemaining-=livesRemaining
 // 		alert('That letter is not in the puzzle');
-		alreadyGuessed.push(playerGuess);
+
 //close 1st condition
 	}
 
 
 	else { 
-		for(i=0; i< correctLetterLocations.length; i++) {
+		
 		//alert('That letter is in the puzzle');	
 		//splice out underscores and splice in correctly identified letter	
-		 x = correctLetterLocations[i];
-		currentWordState = newarray;
+
+		currentWordState = backup.slice();
+		backup = [];
+		for(i=0; i<puzzleUnderscores.length; i++) {
+		//change array value in currentWordState to swap in guessed letter for underscore 
+		//console.log(puzzleLetters[i]);
+		 if(puzzleLetters[i]===playerGuess) {
+		 k = puzzleLetters[i];
+		 console.log(k);
+		 currentWordState.push(k);
+		 }
+
+		 	else {
+		 	currentWordState.push(puzzleUnderscores[i]);
+		 	}	
 		}
-			alreadyGuessed.push(playerGuess);
-		
-// 			//case 1 --already a letter in puzzleUnderscores = do nothing
-// 			if(puzzleUnderscores[k] != "__&nbsp;") {
-// 				//doing nothing -- hi!
-// 			console.log("case1 happened");
-// 			}
-// 			//case 2--is an underscore now but was just correctly guessed -- change to playerGuess
-// 			else if(puzzleUnderscores[k] === "__&nbsp;" && puzzleLetters[k] === playerGuess) {
-// 				//flip the display Vanna!
-// 				puzzleUnderscores[k] = playerGuess;
-// 				console.log("case2 attempting to run flipTheLetter");
-// 				flipTheLetter();
-// 			}
-
-// 			//case 3 -- is an underscore and was not correctly guessed yet -- do nothing
-// 			else {
-// 				// more of nothing -- placeholder for my logic
-// 				console.log("case3 is this thing even working?");
-// 			//	flipTheLetter();
-// 			}
-// //close the for loop with k
-// 		}
-
-// 			// don't need this ( i don't think): leaving next line just in case
-// 			//puzzleUnderscores[index] = puzzleLetters[index] ;
-
-// // close else scenario
-// 			}
-
-// 			//correctLetterLocations is identifying indexes successfully
-			//console.log(correctLetterLocations);
-
-// alreadyGuessed.push(playerGuess);	
-			
-// 			//console.log(alreadyGuessed);
-
-// //problem here currentWordState is blank
-
-// 			//currentWordState = currentWordState + puzzleLetters[i];
-// 			//};
-// 			// var flipTheLetter = function() {
-// 			// howLongIspuzzleItem = puzzleUnderscores.length;
-// 			// for (j = 0; j < howLongIspuzzleItem; j++) {
-// 			// x = puzzleUnderscores[j];
-// 			// currentWordState.push(x);
-// 			// }
-			}
+		}
 }
+			// console.log(currentWordState);
+			backup = currentWordState.slice();
+			var showMeThePuzzle = currentWordState.join('');
+			currentWordState = [];
+			document.getElementById("puzzleWithBlanks").innerHTML =showMeThePuzzle;
+			document.getElementById("usedletters").innerHTML =alreadyGuessed;
+			document.getElementById("livesRemaining").innerHTML =livesRemaining;
 			
-			console.log(currentWordState);
-			document.getElementById("puzzleWithBlanks").innerHTML =currentWordState;
 	
 
 //close on.key up
@@ -199,14 +248,14 @@ function getAllIndexes(arr, val) {
     return indexes;
 
 }
-
+alreadyGuessed.push(playerGuess);
 //close getAllIndexes function
 }
-document.getElementById("puzzleWithBlanks").innerHTML =puzzleUnderscores;
+
 playerChoice();
 
-};
 //close function event
+
 
 
 
@@ -221,7 +270,8 @@ playerChoice();
 			<br>Grateful Dead <wbr>Hangman <br><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span> <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span><span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span></div>
 	</nav>
 
-	<h1> The game of hangman themed around the good ol' Grateful Dead!</h1>
+	<p> The game of hangman themed 
+	<br>around the good ol' Grateful Dead!</p>
 
 <br><br><br>
 		
@@ -233,13 +283,21 @@ playerChoice();
 
 	<div class = "col-md-4">
 	Guess a letter in the Grateful Dead related item by clicking start new game and pressing a letter on your keyboard:	<br> <br>
-	</div>
+	
 
 	<div class= "col-md-8">
 	<p id = "puzzleWithBlanks">Puzzle will appear here.</p>	
 	</div>
+	</div>
+	</div>
+<div class = "row">
+<div class = "col-md-4">
+<p>Letters <br>Used:</p>
+<p id = "usedletters"> </p>
+<p>Lives <br>remaining:</p>
+<p id = "livesRemaining"> </p>
 
-
+</div>
 </div>
 </body>
 </html>
