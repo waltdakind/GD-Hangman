@@ -19,8 +19,11 @@
 
         <script>
 window.onload=function(){
+ //an outer function for scope purposes
  
-function resetVariables () {
+ playHangman();
+
+ function playHangman() {
   //global variables
         var x;
         var i;
@@ -42,7 +45,6 @@ function resetVariables () {
         var guessesUsed = 0;
         var numberOfWins =0;
         var gameOver = false;
-}
 
   //picking a puzzle for the user to guess
   
@@ -140,32 +142,42 @@ var newPuzzle = function() {
 //random selection from possible answers
 var random = Math.floor(Math.random() * puzzleAnswers.length);
 puzzleItem  = puzzleAnswers[random];
-var livesRemaining = 8;     
+
+// logic should be that every turn that doesn't have a successful guess deducts one from this   
+var livesRemaining = 8;  
 howLongIspuzzleItem = puzzleItem.length;
 
-//stores the blanks for diplaying new puzzle -- emptying for new puzzle
-//current word is an exact copy for uncovering letters
-//puzzleLetters is the solution without any blanks
+function displayHangmanState(livesRemaining) {
+    var hangmanImage = ("'/assets/images/0" + 
+                       livesRemaining + "livesleft.png'");
+    // rewrite image tag based on how many incorrect guesses
+    document.getElementById('imageDiv').appendChild(img);
+    }
 
+//stores the blanks for diplaying new puzzle -- emptying for new puzzle
+
+//current word is an exact copy for uncovering letters
+
+//puzzleLetters is the solution without any blanks
 
 //these arrays hold all the stuff to check guesses against and update the display
 for (i = 0; i < howLongIspuzzleItem; i++) {
 
   x = puzzleItem.charAt(i);
 
-  if(x === " "  || x === "'")
+  if(x === " "  || x === "'" || x ==="-" || x === ",")
   {
   puzzleUnderscores.push(x + "&nbsp;&nbsp;");
-  //currentWordState.push(x + "&nbsp;&nbsp;");
+  currentWordState.push(x + "&nbsp;&nbsp;");
   puzzleLetters.push(x + "&nbsp;&nbsp;");
-  }
+  } //closes case for space or apostrophe dash or comma
   else {
     puzzleUnderscores.push("___&nbsp;");
-    //currentWordState.push("___&nbsp;");
+    currentWordState.push("___&nbsp;");
     puzzleLetters.push(x);
     
-}
-}
+      } //closes else
+} //closes underscore / index generation
 
 console.log(puzzleUnderscores.length);
 console.log(puzzleItem);
@@ -255,13 +267,14 @@ function getAllIndexes(arr, val) {
 
 //close getAllIndexes function
 }
+playerChoice();
 }
 
-//playerChoice();
+
 
 //close function event
 
-
+}
 
 
 
@@ -281,9 +294,11 @@ function getAllIndexes(arr, val) {
     <div class="col-sm-2 sidenav">
         <img src="assets/images//GDhangman.jpg" alt="Backstage pass Fall '95 tour that never happened">
     <p>Lives remaining:</p>
-<p class = "livesRemaining"> </p>
+<p class id = "livesRemaining"> </p>
+<br><p>Letters guessed: </p>
+<pid = "usedletters"></p>
     </div>
-    <div class="col-sm-8 text-left"> 
+    <div class="col-sm-6 text-left"> 
       <h1> 
         <span class="glyphicon glyphicon-flash red"></span> 
         <span class="glyphicon glyphicon-flash blue"></span>
@@ -315,14 +330,14 @@ function getAllIndexes(arr, val) {
       <p>Play hangman with a theme about the good ol' Grateful Dead.</p>
 
       <a class="btn btn-danger btn-lg" onclick function= "newPuzzle()">Start New Game</a>
-      <p class = "puzzleWithBlanks"></p>
+      <p class id = "puzzleWithBlanks"></p>
       <hr>
 
       
   </div>
-    <div class="col-sm-2 sidenav">
-        <p>Letters guessed</p>
-        <p class = "usedletters"> </p>
+    <div class="col-sm-4 sidenav">
+        <p></p>
+        <p class = "imageDiv"> </p>
     </div>
   </div>
 </div>

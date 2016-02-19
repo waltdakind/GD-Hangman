@@ -68,8 +68,12 @@ color: blue;
 }
 p {
 	white-space: pre;
-
-
+}
+p.#usedletters {
+	font-style: underline;
+}
+p.#livesRemaining{
+	font-style: underline;
 }
 
     /* Remove the navbar's default margin-bottom and rounded borders */ 
