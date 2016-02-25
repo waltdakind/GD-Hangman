@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Postcards of the Hanging -- Grateful Dead Hangman</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Grateful Dead Hangman!</h1>
+			<p>Guess the letters and figure out the Grateful Dead related clue</p>
+			<p>
+			<!-- <a class="btn btn-primary btn-lg">Start New Game</a> -->
+			</p>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Solve the puzzle:</h3>
+			</div>
+			<div class="panel-body">
+				<span class id = "puzzleString"> </span>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Incorrect Guesses: <br><span class id = "lettersNotInPuzzle"></span></p>
+
+				</div>
+			</div>
+						<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Guesses Remaining: <br><span class id = "guessesRemaining"></span></p>
+
+				</div>
+			</div>
+						<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Wins: <br><span class id = "winCounter"></span></p>
+
+				</div>
+			</div>
+						<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Losses: <br><span class id = "lossCounter"> </span></p>
+				</div>
+			</div>
+						<div class="panel panel-default">
+				<div class="panel-body">
+				<span class id = "hangmanImage"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script src ="puzzleLogic.js"></script>
