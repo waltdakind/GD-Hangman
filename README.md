@@ -7,7 +7,8 @@ Game for week three homework
 # venues that are part of Grateful Dead history
 
 
-# puzzleLogic and hangman frame are based nealy entirely on 
+# *puzzleLogic.js* and *hangman_frame.html*
+# are based nealy entirely on 
 # Ahmed's YouTube explanation
 # currently does not award wins or display updates to 
 # puzzle blanks  -- can't figure out why
