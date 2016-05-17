@@ -1,6 +1,6 @@
 window.onload=function(){
  
-function resetVariables () {
+var resetVariables = function() {
   //global variables
         var x;
         var i;
@@ -22,16 +22,16 @@ function resetVariables () {
         var guessesUsed = 0;
         var numberOfWins =0;
         var gameOver = false;
-}
+};
 
-  //picking a puzzle for the user to guess
+//picking a puzzle for the user to guess
   
 var newPuzzle = function() {
 //trigger to start new game , call reset variables and declare some undefined vars
     
     resetVariables();
 
-    $('.btn.danger').button('toggle').addClass('fat')
+    $('.btn.danger').button('toggle').addClass('fat');
 
 //string for the puzzle MY GAWD IT'S HUUUUUGE
     var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
@@ -57,56 +57,25 @@ var newPuzzle = function() {
     "CATFISH JOHN", "STAGGER LEE", "SAINT STEPHEN", "ALL ALONG THE WATCHTOWER","AROUND AND AROUND",
     "BALLAD OF A THIN MAN", "BEAT IT ON DOWN THE LINE",
     "BIG BOSS MAN", "BIG BOY PETE", "BIG RAILROAD BLUES",
-    "BIG RIVER",
-    "BROKEN ARROW",
-    "DANCING IN THE STREET",
-    "DAY TRIPPER",
-    "DEAR PRUDENCE",
-    "DEVIL WITH A BLUE DRESS ON",
-    "EARLY MORNING RAIN",
-    "EL PASO",
-    "GLORIA",
-    "GOOD MORNING LITTLE SCHOOL GIRL",
-    "HARD TO HANDLE",
-    "HEY BO DIDDLEY",
-    "HEY JUDE",
-    "I SECOND THAT EMOTION",
-    "IKO IKO",
-    "IN THE MIDNIGHT HOUR",
-    "IT HURTS ME TOO",
-    "IT TAKES A LOT TO LAUGH, IT TAKES A TRAIN TO CRY",
-    "JUST LIKE TOM THUMB'S BLUES",
-    "KANSAS CITY",
-    "KEEP ON GROWING",
-    "THE LAST TIME",
-    "LITTLE RED ROOSTER",
-    "LONG BLACK LIMOUSINE",
-    "LUCY IN THE SKY WITH DIAMONDS",
-    "MAMA TRIED",
-    "ME AND BOBBY MCGEE",
-    "ME AND MY UNCLE",
-    "THE MONKEY AND THE ENGINEER",
-    "MORNING DEW",
-    "NEW MINGLEWOOD BLUES",
-    "NOT FADE AWAY",
-    "THE PROMISED LAND",
-    "QUEEN JANE APPROXIMATELY",
-    "THE RACE IS ON",
-    "RAIN",
-    "REVOLUTION",
-    "THE SAME THING",
-    "SHE BELONGS TO ME",
-    "SING ME BACK HOME",
-    "SMOKESTACK LIGHTNING",
-    "SO WHAT",
-    "STIR IT UP",
-    "STUCK INSIDE OF MOBILE WITH THE MEMPHIS BLUES AGAIN",
-    "TOMORROW IS FOREVER",
-    "TOMORROW NEVER KNOWS",
-    "TURN ON YOUR LOVE LIGHT",
-    "VISIONS OF JOHANNA",
-    "WAKE UP LITTLE SUSIE",
-    "WALKING THE DOG",
+    "BIG RIVER","BROKEN ARROW","DANCING IN THE STREET",
+    "DAY TRIPPER", "DEAR PRUDENCE", "DEVIL WITH A BLUE DRESS ON",
+    "EARLY MORNING RAIN", "EL PASO", "GLORIA","GOOD MORNING LITTLE SCHOOL GIRL",
+    "HARD TO HANDLE","HEY BO DIDDLEY",
+    "HEY JUDE","I SECOND THAT EMOTION","IKO IKO",
+    "IN THE MIDNIGHT HOUR", "IT HURTS ME TOO", "IT TAKES A LOT TO LAUGH, IT TAKES A TRAIN TO CRY",
+    "JUST LIKE TOM THUMB'S BLUES","KANSAS CITY","KEEP ON GROWING","THE LAST TIME",
+    "LITTLE RED ROOSTER","LONG BLACK LIMOUSINE",
+    "LUCY IN THE SKY WITH DIAMONDS", "MAMA TRIED",
+    "ME AND BOBBY MCGEE", "ME AND MY UNCLE", "THE MONKEY AND THE ENGINEER",
+    "MORNING DEW","NEW MINGLEWOOD BLUES", "NOT FADE AWAY",
+    "THE PROMISED LAND","QUEEN JANE APPROXIMATELY", "THE RACE IS ON",
+    "RAIN", "REVOLUTION","THE SAME THING",
+    "SHE BELONGS TO ME","SING ME BACK HOME",
+    "SMOKESTACK LIGHTNING", "SO WHAT",
+    "STIR IT UP",   "STUCK INSIDE OF MOBILE WITH THE MEMPHIS BLUES AGAIN",
+    "TOMORROW IS FOREVER",   "TOMORROW NEVER KNOWS",
+    "TURN ON YOUR LOVE LIGHT","VISIONS OF JOHANNA",
+    "WAKE UP LITTLE SUSIE",  "WALKING THE DOG",
     "WANG DANG DOODLE",
     "THE WEIGHT",
     "WEREWOLVES OF LONDON",
@@ -237,9 +206,7 @@ function getAllIndexes(arr, val) {
 }
 }
 
-//playerChoice();
 
-//close function event
 
 
 

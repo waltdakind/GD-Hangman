@@ -13,49 +13,51 @@
         
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
         
-      <!--  <script type="text/javascript" src="assets/javascript/game.js"></script> -->
+        <!--<script type="text/javascript" src="assets/javascript/game.js"></script>-->
 
         <link rel="stylesheet" href="assets/css/style.css">
 
         <script>
-window.onload=function(){
- //an outer function for scope purposes
- 
- playHangman();
+            $( document ).ready(function() {
+            //an outer function for scope purposes
 
- function playHangman() {
-  //global variables
-        var x;
-        var i;
-        var j;
-        var k;
-        var alreadyGuessed = [];
-        var alphabet = ['A', 'B', 'C', 'D',
-          'E', 'F', 'G','H','I', 'J', 'K', 
-          'L','M', 'N', 'O', 'P', 'Q', 'R', 'S',
-          'T', 'U', 'V','W', 'X', 'Y','Z'];
 
-        var puzzleUnderscores = [];
-        var currentWordState = [];
-        var correctLetterLocations = 0;
-        var puzzleLetters = [];
-        var backup = [];
-        var puzzleItem  = "";
-        var howLongIspuzzleItem = 0;
-        var guessesUsed = 0;
-        var numberOfWins =0;
-        var gameOver = false;
+                //global variables
+                var x;
+                var i;
+                var j;
+                var k;
+                var alreadyGuessed = [];
+                var alphabet = ['A', 'B', 'C', 'D',
+                    'E', 'F', 'G','H','I', 'J', 'K',
+                    'L','M', 'N', 'O', 'P', 'Q', 'R', 'S',
+                    'T', 'U', 'V','W', 'X', 'Y','Z'];
 
-  //picking a puzzle for the user to guess
+                var puzzleUnderscores = [];
+                var currentWordState = [];
+                var puzzleLetters = [];
+                var backup = [];
+                var puzzleItem  = "";
+                var howLongIsPuzzleItem = 0;
+                var gameOver = false;
+                var livesRemaining = 8;
+                var hangmanImage = "";
+                var guessesUsed = 0;
+                var numberOfWins =0;
+                var correctLetterLocations = 0;
+
+                var playHangman = function(){
+     //test to see if function ran
+     console.log("Game started!");
+
+    //picking a puzzle for the user to guess
   
-var newPuzzle = function() {
-//trigger to start new game , call reset variables and declare some undefined vars
-    
-    resetVariables();
-
-    $('.btn.danger').button('toggle').addClass('fat')
-
-//string for the puzzle MY GAWD IT'S HUUUUUGE
+    var newPuzzle = function() {
+    //trigger to start new game , call reset variables and declare some undefined vars
+    //string for the puzzle
+    //====================================================
+        var showMeThePuzzle = "";
+        var currentWordState = [];
     var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
     "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
     "MONEY FOR GASOLINE", "BOB DYLAN", 
@@ -77,91 +79,56 @@ var newPuzzle = function() {
     "BILL KREUTZMANN", "STANDING ON THE MOON", "CRAZY FINGERS", "IT MUST HAVE BEEN THE ROSES", 
     "TOM CONSTANTEN", "DESOLATION ROW", "ALABAMA GETAWAY", "MEXICALI BLUES", "BOX OF RAIN",
     "CATFISH JOHN", "STAGGER LEE", "SAINT STEPHEN", "ALL ALONG THE WATCHTOWER","AROUND AND AROUND",
-    "BALLAD OF A THIN MAN", "BEAT IT ON DOWN THE LINE",
-    "BIG BOSS MAN", "BIG BOY PETE", "BIG RAILROAD BLUES",
-    "BIG RIVER",
-    "BROKEN ARROW",
-    "DANCING IN THE STREET",
-    "DAY TRIPPER",
-    "DEAR PRUDENCE",
-    "DEVIL WITH A BLUE DRESS ON",
-    "EARLY MORNING RAIN",
-    "EL PASO",
-    "GLORIA",
-    "GOOD MORNING LITTLE SCHOOL GIRL",
-    "HARD TO HANDLE",
-    "HEY BO DIDDLEY",
-    "HEY JUDE",
-    "I SECOND THAT EMOTION",
-    "IKO IKO",
-    "IN THE MIDNIGHT HOUR",
-    "IT HURTS ME TOO",
-    "IT TAKES A LOT TO LAUGH, IT TAKES A TRAIN TO CRY",
-    "JUST LIKE TOM THUMB'S BLUES",
-    "KANSAS CITY",
-    "KEEP ON GROWING",
-    "THE LAST TIME",
-    "LITTLE RED ROOSTER",
-    "LONG BLACK LIMOUSINE",
-    "LUCY IN THE SKY WITH DIAMONDS",
-    "MAMA TRIED",
-    "ME AND BOBBY MCGEE",
-    "ME AND MY UNCLE",
-    "THE MONKEY AND THE ENGINEER",
-    "MORNING DEW",
-    "NEW MINGLEWOOD BLUES",
-    "NOT FADE AWAY",
-    "THE PROMISED LAND",
-    "QUEEN JANE APPROXIMATELY",
-    "THE RACE IS ON",
-    "RAIN",
-    "REVOLUTION",
-    "THE SAME THING",
-    "SHE BELONGS TO ME",
-    "SING ME BACK HOME",
-    "SMOKESTACK LIGHTNING",
-    "SO WHAT",
-    "STIR IT UP",
-    "STUCK INSIDE OF MOBILE WITH THE MEMPHIS BLUES AGAIN",
-    "TOMORROW IS FOREVER",
-    "TOMORROW NEVER KNOWS",
-    "TURN ON YOUR LOVE LIGHT",
-    "VISIONS OF JOHANNA",
-    "WAKE UP LITTLE SUSIE",
-    "WALKING THE DOG",
-    "WANG DANG DOODLE",
-    "THE WEIGHT",
-    "WEREWOLVES OF LONDON",
-    "YOU DON'T LOVE ME",
-    "YOU WIN AGAIN",
-    "MYSTERY TRAIN",
-    "CRYPTICAL ENVELOPMENT",
-    "GENTLEMEN START YOUR ENGINES"
+    "BALLAD OF A THIN MAN", "BEAT IT ON DOWN THE LINE","BIG BOSS MAN", "BIG BOY PETE", "BIG RAILROAD BLUES",
+    "BIG RIVER","BROKEN ARROW","DANCING IN THE STREET","DAY TRIPPER",
+    "DEAR PRUDENCE","DEVIL WITH A BLUE DRESS ON","EARLY MORNING RAIN","EL PASO","GLORIA",
+    "GOOD MORNING LITTLE SCHOOL GIRL","HARD TO HANDLE","HEY BO DIDDLEY","HEY JUDE",
+    "I SECOND THAT EMOTION","IKO IKO","IN THE MIDNIGHT HOUR","IT HURTS ME TOO",
+    "IT TAKES A LOT TO LAUGH, IT TAKES A TRAIN TO CRY","JUST LIKE TOM THUMB'S BLUES",
+    "KANSAS CITY","KEEP ON GROWING",
+    "THE LAST TIME",    "LITTLE RED ROOSTER",
+    "LONG BLACK LIMOUSINE",    "LUCY IN THE SKY WITH DIAMONDS",
+    "MAMA TRIED",    "ME AND BOBBY MCGEE",
+    "ME AND MY UNCLE",    "THE MONKEY AND THE ENGINEER",
+    "MORNING DEW",    "NEW MINGLEWOOD BLUES",
+    "NOT FADE AWAY",    "THE PROMISED LAND",
+    "QUEEN JANE APPROXIMATELY",    "THE RACE IS ON",
+    "RAIN",    "REVOLUTION",
+    "THE SAME THING",    "SHE BELONGS TO ME",
+    "SING ME BACK HOME",    "SMOKESTACK LIGHTNING", "SO WHAT",    "STIR IT UP",
+    "STUCK INSIDE OF MOBILE WITH THE MEMPHIS BLUES AGAIN",    "TOMORROW IS FOREVER",
+    "TOMORROW NEVER KNOWS",    "TURN ON YOUR LOVE LIGHT",
+    "VISIONS OF JOHANNA",    "WAKE UP LITTLE SUSIE",
+    "WALKING THE DOG",    "WANG DANG DOODLE",
+    "THE WEIGHT",    "WEREWOLVES OF LONDON",
+    "YOU DON'T LOVE ME",    "YOU WIN AGAIN",
+    "MYSTERY TRAIN",    "CRYPTICAL ENVELOPMENT",    "GENTLEMEN START YOUR ENGINES"
     ];
 
 //random selection from possible answers
+
 var random = Math.floor(Math.random() * puzzleAnswers.length);
 puzzleItem  = puzzleAnswers[random];
 
 // logic should be that every turn that doesn't have a successful guess deducts one from this   
-var livesRemaining = 8;  
-howLongIspuzzleItem = puzzleItem.length;
 
-function displayHangmanState(livesRemaining) {
-    var hangmanImage = ("'/assets/images/0" + 
-                       livesRemaining + "livesleft.png'");
+howLongIsPuzzleItem = puzzleItem.length;
+
+
+    hangmanImage = ("<img src='./assets/images/0" +
+                       livesRemaining + "livesleft.png'>");
+
     // rewrite image tag based on how many incorrect guesses
-    document.getElementById('imageDiv').appendChild(img);
-    }
+    $('#hangman').replaceWith(hangmanImage);
 
-//stores the blanks for diplaying new puzzle -- emptying for new puzzle
+//stores the blanks for displaying new puzzle -- emptying for new puzzle
 
 //current word is an exact copy for uncovering letters
 
 //puzzleLetters is the solution without any blanks
 
 //these arrays hold all the stuff to check guesses against and update the display
-for (i = 0; i < howLongIspuzzleItem; i++) {
+for (i = 0; i < howLongIsPuzzleItem; i++) {
 
   x = puzzleItem.charAt(i);
 
@@ -195,38 +162,39 @@ document.getElementById("puzzleWithBlanks").innerHTML =showMeThePuzzle;
 
 //document.getElementById("puzzleWithBlanks").innerHTML =currentWordState;
 };
-
+//call newPuzzle
+     newPuzzle();
 var playerChoice = function() {
-//takes user input from keypress
+//takes user input from key press
 document.onkeyup = function(event) {
 
+    var playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
 
-var playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
+    correctLetterLocations = getAllIndexes(puzzleLetters, playerGuess);
 
-var correctLetterLocations = getAllIndexes(puzzleLetters, playerGuess);
-showMeThePuzzle = "";
-currentWordState = [];
 //console.log(correctLetterLocations);
 //make sure choice is a letter and not chosen before
-if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) === -1 && gameOver!= false) {
+
+if (alphabet.indexOf(playerGuess) !== -1 && alreadyGuessed.indexOf(playerGuess) == -1 && gameOver !== true) {
 
   
-  if(puzzleLetters.indexOf(playerGuess)=== -1) {
-    livesRemaining = livesRemaining - 1 
+  if(puzzleLetters.indexOf(playerGuess)== -1) {
+    livesRemaining -=  1;
 
-//    alert('That letter is not in the puzzle');
-alreadyGuessed.push(playerGuess);
+      console.log('That letter is not in the puzzle');
+      guessesUsed = guessesUsed+1;
+      alreadyGuessed.push(playerGuess);
 //close 1st condition
   }
 
 
   else { 
     
-    //alert('That letter is in the puzzle');  
+    console.log('That letter is in the puzzle');
     //splice out underscores and splice in correctly identified letter  
 
     currentWordState = backup.slice();
-    backup = [];
+
     for(i=0; i<puzzleUnderscores.length; i++) {
     //change array value in currentWordState to swap in guessed letter for underscore 
     //console.log(puzzleLetters[i]);
@@ -246,8 +214,9 @@ alreadyGuessed.push(playerGuess);
             backup = currentWordState.slice();
             var showMeThePuzzle = currentWordState.join('');
             currentWordState = [];
+
             document.getElementById("puzzleWithBlanks").innerHTML =showMeThePuzzle;
-            document.getElementById("usedletters").innerHTML =alreadyGuessed;
+            document.getElementById("usedletters").innerHTML =alreadyGuessed.toString();
             document.getElementById("livesRemaining").innerHTML =livesRemaining;
   
   if(livesRemaining===0) {
@@ -267,14 +236,18 @@ function getAllIndexes(arr, val) {
 
 //close getAllIndexes function
 }
-playerChoice();
+                playerChoice();
 }
 
 
+                    playHangman();
 
+      $("#btn-danger").click(function(){
+
+      });
 //close function event
 
-}
+});
 
 
 
@@ -292,11 +265,11 @@ playerChoice();
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-        <img src="assets/images//GDhangman.jpg" alt="Backstage pass Fall '95 tour that never happened">
+        <img src="assets/images/GDhangman.jpg" alt="Backstage pass Fall '95 tour that never happened">
     <p>Lives remaining:</p>
 <p class id = "livesRemaining"> </p>
 <br><p>Letters guessed: </p>
-<pid = "usedletters"></p>
+<p id = "usedletters"></p>
     </div>
     <div class="col-sm-6 text-left"> 
       <h1> 
@@ -327,7 +300,10 @@ playerChoice();
         <span class="glyphicon glyphicon-flash blue"></span>
         <span class="glyphicon glyphicon-flash red"></span>
       </h1>
-      <p>Play hangman with a theme about the good ol' Grateful Dead.</p>
+     <div class = "container">
+         <div class = "col-sm-4"> <p>Play hangman with a theme about the good ol' Grateful Dead.</p></div>
+
+     </div>
 
       <a class="btn btn-danger btn-lg" onclick function= "newPuzzle()">Start New Game</a>
       <p class id = "puzzleWithBlanks"></p>
@@ -337,7 +313,7 @@ playerChoice();
   </div>
     <div class="col-sm-4 sidenav">
         <p></p>
-        <p class = "imageDiv"> </p>
+        <p class id = "hangman"> </p>
     </div>
   </div>
 </div>
