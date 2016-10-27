@@ -23,10 +23,7 @@
 
 
             //global variables
-            var x;
-            var i;
-            var j;
-            var k;
+            var x, i, j, k;
             var alreadyGuessed = [];
             var alphabet = ['A', 'B', 'C', 'D',
                 'E', 'F', 'G', 'H', 'I', 'J', 'K',
@@ -115,12 +112,14 @@
                     howLongIsPuzzleItem = puzzleItem.length;
 
 
-                    hangmanImage = ("<img src='./assets/images/0" +
-                    livesRemaining + "livesleft.png'>");
+                    hangmanImage = ("./assets/images/0" +
+                    livesRemaining + "livesLeft.png");
+console.log(hangmanImage);
 
                     // rewrite image tag based on how many incorrect guesses
-                    $('#hangman').replaceWith(hangmanImage);
-
+                    // http://api.jquery.com/replacewith/
+              //      $('#hangman').replaceWith(hangmanImage);
+                    $("#hangman").attr("src", hangmanImage);
 //stores the blanks for displaying new puzzle -- emptying for new puzzle
 
 //current word is an exact copy for uncovering letters
@@ -179,7 +178,11 @@
 
                             if (puzzleLetters.indexOf(playerGuess) == -1) {
                                 livesRemaining -= 1;
-
+                                hangmanImage = ("<img src='./assets/images/0" +
+                                livesRemaining + "livesLeft.png'>");
+                                //this wasn't working before because it wasn't camel case
+                                console.log(hangmanImage);
+                                $('#hangman').replaceWith(hangmanImage);
                                 console.log('That letter is not in the puzzle');
                                 guessesUsed = guessesUsed + 1;
                                 alreadyGuessed.push(playerGuess);
@@ -217,7 +220,7 @@
                         document.getElementById("puzzleWithBlanks").innerHTML = showMeThePuzzle;
                         document.getElementById("usedletters").innerHTML = alreadyGuessed.toString();
                         document.getElementById("livesRemaining").innerHTML = livesRemaining;
-
+                    //    $('#hangman').replaceWith(hangmanImage);
                         if (livesRemaining === 0) {
                             gameOver = true;
                             alert("You didn't get the solution in time!");
@@ -242,7 +245,7 @@
             playHangman();
 
             $("#btn-danger").click(function () {
-
+                playHangman();
             });
 //close function event
 
@@ -264,7 +267,7 @@
         <div class="col-sm-2 sidenav">
             <img src="assets/images/GDhangman.jpg" alt="Backstage pass Fall '95 tour that never happened">
             <p>Lives remaining:</p>
-            <p class id="livesRemaining"></p>
+            <p id="livesRemaining"></p>
             <br>
             <p>Letters guessed: </p>
             <p id="usedletters"></p>
@@ -311,7 +314,7 @@
         </div>
         <div class="col-sm-4 sidenav">
             <p></p>
-            <p class id="hangman"></p>
+            <img id = "hangman" src="assets/images/08livesLeft.png" alt="Dancing bears, Bobby hates em.">
         </div>
     </div>
 </div>
