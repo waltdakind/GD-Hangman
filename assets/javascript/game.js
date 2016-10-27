@@ -1,9 +1,9 @@
-$(document).ready(function () {
+$( document ).ready(function() {
     //an outer function for scope purposes
 
 
     //global variables
-    var x, i, j, k;
+    var x, i, k;
     var alreadyGuessed = [];
     var alphabet = ['A', 'B', 'C', 'D',
         'E', 'F', 'G', 'H', 'I', 'J', 'K',
@@ -20,7 +20,7 @@ $(document).ready(function () {
     var livesRemaining = 8;
     var hangmanImage = "";
     var guessesUsed = 0;
-    var numberOfWins = 0;
+   // var numberOfWins = 0;
     var correctLetterLocations = 0;
 
     var playHangman = function () {
@@ -92,12 +92,12 @@ $(document).ready(function () {
             howLongIsPuzzleItem = puzzleItem.length;
 
 
-            hangmanImage = ("./assets/images/0" +
+            hangmanImage = ("assets/images/0" +
             livesRemaining + "livesLeft.png");
             console.log(hangmanImage);
 
             // rewrite image tag based on how many incorrect guesses
-
+            $('#hangman').attr("src", hangmanImage);
 
 //stores the blanks for displaying new puzzle -- emptying for new puzzle
 
@@ -157,11 +157,11 @@ $(document).ready(function () {
 
                     if (puzzleLetters.indexOf(playerGuess) == -1) {
                         livesRemaining -= 1;
-                        hangmanImage = ("<img src='./assets/images/0" +
-                        livesRemaining + "livesLeft.png'>");
+                        hangmanImage = ("assets/images/0" +
+                        livesRemaining + "livesLeft.png");
                         //this wasn't working before because it wasn't camel case
                         console.log(hangmanImage);
-                        $('#hangman').replaceWith(hangmanImage);
+                       // $('#hangman').replaceWith(hangmanImage);
                         console.log('That letter is not in the puzzle');
                         guessesUsed = guessesUsed + 1;
                         alreadyGuessed.push(playerGuess);
@@ -198,8 +198,8 @@ $(document).ready(function () {
 
                 document.getElementById("puzzleWithBlanks").innerHTML = showMeThePuzzle;
                 document.getElementById("usedletters").innerHTML = alreadyGuessed.toString();
-                document.getElementById("livesRemaining").innerHTML = livesRemaining;
-                //    $('#hangman').replaceWith(hangmanImage);
+                $("livesRemaining").text = livesRemaining;
+                 $('#hangman').attr("src", hangmanImage);
                 if (livesRemaining === 0) {
                     gameOver = true;
                     alert("You didn't get the solution in time!");
