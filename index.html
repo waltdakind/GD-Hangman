@@ -11,7 +11,10 @@
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
 
     <!--<script type="text/javascript" src="assets/javascript/game.js"></script>-->
 
@@ -117,9 +120,8 @@
 console.log(hangmanImage);
 
                     // rewrite image tag based on how many incorrect guesses
-                    // http://api.jquery.com/replacewith/
-              //      $('#hangman').replaceWith(hangmanImage);
-                    $("#hangman").attr("src", hangmanImage);
+
+
 //stores the blanks for displaying new puzzle -- emptying for new puzzle
 
 //current word is an exact copy for uncovering letters
@@ -244,7 +246,7 @@ console.log(hangmanImage);
 
             playHangman();
 
-            $("#btn-danger").click(function () {
+            $("#btn-danger").bind('click',function () {
                 playHangman();
             });
 //close function event
