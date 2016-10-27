@@ -159,9 +159,6 @@ $( document ).ready(function() {
                         livesRemaining -= 1;
                         hangmanImage = ("assets/images/0" +
                         livesRemaining + "livesLeft.png");
-                        //this wasn't working before because it wasn't camel case
-                        console.log(hangmanImage);
-                       // $('#hangman').replaceWith(hangmanImage);
                         console.log('That letter is not in the puzzle');
                         guessesUsed = guessesUsed + 1;
                         alreadyGuessed.push(playerGuess);
@@ -202,6 +199,7 @@ $( document ).ready(function() {
                  $('#hangman').attr("src", hangmanImage);
                 if (livesRemaining === 0) {
                     gameOver = true;
+                    //TODO make this something nicer than an alert -- either a modal or an animation
                     alert("You didn't get the solution in time!");
 
                 }
