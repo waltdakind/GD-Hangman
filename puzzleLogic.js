@@ -15,7 +15,7 @@
       var puzzleLength = 0;
       var lettersNotInPuzzle = [];
       var hangmanImage = "";
-      var puzzleItems = ["jerry", "bobby", "mickey", "phil", "keith", "donna", "brent", "pigpen", "vince"]
+      var puzzleItems = ["jerry", "bobby", "mickey", "phil", "keith", "donna", "brent", "pigpen", "vince"];
       var puzzlePlaceholder = [];
 
 
@@ -33,7 +33,7 @@ function startGame() {
       var puzzleToSolve = puzzleItems[(Math.floor(Math.random() * puzzleItems.length))];
       //console.log(puzzleToSolve);
       puzzleAsArrayOfLetters = puzzleToSolve.split("");
-      puzzleLength = puzzleAsArrayOfLetters.length
+      puzzleLength = puzzleAsArrayOfLetters.length;
       //puzzleString = puzzleString.join(" ");
 
       //for loop 
@@ -57,7 +57,7 @@ document.getElementById("lossCounter").innerHTML = lossCounter;
 
 function evaluateGuess(letter) {
 
-console.log("INITIALLY")
+console.log("INITIALLY");
 console.log(puzzlePlaceholder);
 
 var isLetterInWord = false;
@@ -83,7 +83,7 @@ if(isLetterInWord) {
 	guessesRemaining--;
     }
 
-    console.log("later")
+    console.log("later");
 
     console.log(puzzlePlaceholder);
     console.log(puzzleAsArrayOfLetters);
@@ -123,7 +123,7 @@ document.onkeyup = function(event) {
 	
 	evaluateGuess(letterGuessed);
 	endOfRound();
-}
+};
 
 
 

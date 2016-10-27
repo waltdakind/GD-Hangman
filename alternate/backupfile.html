@@ -52,7 +52,7 @@ puzzleItem	= puzzleAnswers[random];
 			
   				
 
-$('.btn.danger').button('toggle').addClass('fat')
+$('.btn.danger').button('toggle').addClass('fat');
 
 howLongIspuzzleItem = puzzleItem.length;
 puzzleUnderscores = [];
@@ -84,7 +84,7 @@ for(i=0; i < puzzleUnderscores.length; i++) {
 
 document.getElementById("puzzleWithBlanks").innerHTML =currentWordState;
 
-playerChoice = function() {
+var playerChoice = function() {
 //takes user input from keypress
 document.onkeyup = function(event) {
 
@@ -94,7 +94,7 @@ var playerGuess = String.fromCharCode(event.keyCode).toUpperCase();
 //make sure choice is a letter and not chosen before
 if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) === -1) {
 	if(puzzleLetters.indexOf(playerGuess)=== -1) {
-		guessesUsed+=guessesUsed
+		guessesUsed+=guessesUsed;
 		alert('That letter is not in the puzzle');
 		alreadyGuessed.push(playerGuess);
 //close 1st condition
@@ -159,7 +159,7 @@ if (alphabet.indexOf(playerGuess) != -1 && alreadyGuessed.indexOf(playerGuess) =
 	
 
 //close on.key up
-		}
+		};
 function getAllIndexes(arr, val) {
     var indexes = [], i;
     for(i = 0; i < arr.length; i++)
@@ -168,7 +168,7 @@ function getAllIndexes(arr, val) {
     return indexes;
 }
 //close getAllIndexes function
-}
+};
 document.getElementById("puzzleWithBlanks").innerHTML =puzzleUnderscores;
 playerChoice();
 
