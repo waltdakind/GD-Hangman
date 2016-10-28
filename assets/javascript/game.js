@@ -86,17 +86,14 @@ $( document ).ready(function() {
 
             var random = Math.floor(Math.random() * puzzleAnswers.length);
             puzzleItem = puzzleAnswers[random];
-
-// logic should be that every turn that doesn't have a successful guess deducts one from this
-
             howLongIsPuzzleItem = puzzleItem.length;
 
-
+//path to the updated image file based on how many lives left
             hangmanImage = ("assets/images/0" +
             livesRemaining + "livesLeft.png");
             console.log(hangmanImage);
 
-            // rewrite image tag based on how many incorrect guesses
+            // rewrite image tag based on updated image
             $('#hangman').attr("src", hangmanImage);
 
 //stores the blanks for displaying new puzzle -- emptying for new puzzle
@@ -131,7 +128,7 @@ $( document ).ready(function() {
 
 
             showMeThePuzzle = puzzleUnderscores.join('');
-            document.getElementById("puzzleWithBlanks").innerHTML = showMeThePuzzle;
+           $("#puzzleWithBlanks"). showMeThePuzzle;
 //for loop to run through array
 //for(i=0; i < puzzleUnderscores.length; i++) {
 //  currentWordState += puzzleUnderscores[i];
