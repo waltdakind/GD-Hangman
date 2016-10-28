@@ -128,7 +128,7 @@ $( document ).ready(function() {
 
 
             showMeThePuzzle = puzzleUnderscores.join('');
-           $("#puzzleWithBlanks"). showMeThePuzzle;
+           $("#puzzleWithBlanks").text(showMeThePuzzle);
 //for loop to run through array
 //for(i=0; i < puzzleUnderscores.length; i++) {
 //  currentWordState += puzzleUnderscores[i];
@@ -218,9 +218,11 @@ $( document ).ready(function() {
 
     playHangman();
 
-    $("#btn-danger").bind('click',function () {
+    $(".btn-danger").bind('click',function () {
+        console.log('button clicked');
         playHangman();
     });
+
 //close function event
 
 });
