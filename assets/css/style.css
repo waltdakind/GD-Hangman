@@ -1,8 +1,10 @@
 html {
-height : 100%;
-font-family : 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
-color : #ffffff;
-background-image : url(../images/syf128.jpg);
+    height : 100%;
+    font-family : 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+    color : #ffffff;
+    background-image : url(../images/syf128.jpg);
+    background-size: 50px 50px;
+
 }
 body {
 	color: darkblue;
@@ -20,13 +22,14 @@ h1 {
 }
 
 nav {
-	 background-image: url(../images/syf128.jpg);
+    background-image : url(../images/syf128.jpg);
+    background-size: 50px 50px;
 	text-align: justify-all;
 	background-color: white;
 	color: darkblue;
 	font-size: 24px;
 	margin-left: 50px;
-	height: 200px;
+	height: 100px;
 }
  .letter {
     display: inline-block;

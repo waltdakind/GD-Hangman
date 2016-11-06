@@ -9,7 +9,7 @@ $( document ).ready(function() {
         'E', 'F', 'G', 'H', 'I', 'J', 'K',
         'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
         'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
+    var showMeThePuzzle = "";
     var puzzleUnderscores = [];
     var currentWordState = [];
     var puzzleLetters = [];
@@ -26,14 +26,14 @@ $( document ).ready(function() {
     var playHangman = function () {
         //test to see if function ran
         console.log("Game started!");
-
+        showMeThePuzzle ="";
         //picking a puzzle for the user to guess
 
         var newPuzzle = function () {
             //trigger to start new game , call reset variables and declare some undefined vars
             //string for the puzzle
             //====================================================
-            var showMeThePuzzle = "";
+
             var currentWordState = [];
             var puzzleAnswers = ["BOX OF RAIN", "ROBERT HUNTER",
                 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
@@ -108,13 +108,13 @@ $( document ).ready(function() {
                 x = puzzleItem.charAt(i);
 
                 if (x === " " || x === "'" || x === "-" || x === ",") {
-                    puzzleUnderscores.push(x + "&nbsp;&nbsp;");
-                    currentWordState.push(x + "&nbsp;&nbsp;");
-                    puzzleLetters.push(x + "&nbsp;&nbsp;");
+                    puzzleUnderscores.push(x + " &nbsp;");
+                    currentWordState.push(x + " &nbsp;");
+                    puzzleLetters.push(x + " &nbsp;");
                 } //closes case for space or apostrophe dash or comma
                 else {
                     puzzleUnderscores.push("___&nbsp;");
-                    currentWordState.push("___&nbsp;");
+                    currentWordState.push("___&nbsp;" );
                     puzzleLetters.push(x);
 
                 } //closes else
@@ -127,8 +127,8 @@ $( document ).ready(function() {
             console.log(puzzleLetters);
 
 
-            showMeThePuzzle = puzzleUnderscores.join('');
-           $("#puzzleWithBlanks").text(showMeThePuzzle);
+            showMeThePuzzle = '<p> ' + puzzleUnderscores.join('').toString() + ' </p>';
+          $("#puzzleWithBlanks").html(showMeThePuzzle);
 //for loop to run through array
 //for(i=0; i < puzzleUnderscores.length; i++) {
 //  currentWordState += puzzleUnderscores[i];
@@ -218,7 +218,7 @@ $( document ).ready(function() {
 
     playHangman();
 
-    $(".btn-danger").bind('click',function () {
+    $(".btn").bind('click',function () {
         console.log('button clicked');
         playHangman();
     });

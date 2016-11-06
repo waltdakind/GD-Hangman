@@ -5,7 +5,7 @@
 //Global variables
 //===================================================================================
     
-    // game conters
+    // game counters
       var winCounter = 0;
       var lossCounter = 0;
       var guessesRemaining =9;
