@@ -13,7 +13,7 @@ body {
 
 }
 h1 {
-	align-text: left;
+	text-align: left;
 	background-color: white;
 	color: red;
 		font-size: 18px;
@@ -22,66 +22,31 @@ h1 {
 }
 
 nav {
-    background-image : url(../images/syf128.jpg);
+    background: white url(../images/syf128.jpg);
     background-size: 50px 50px;
 	text-align: justify-all;
-	background-color: white;
-	color: darkblue;
 	font-size: 24px;
 	margin-left: 50px;
 	height: 100px;
 }
- .letter {
-    display: inline-block;
-    list-style: none;
-    width: 20px;
-    margin: 0 5px;
-    border-bottom: 1px solid black;
-    text-align: center;
-    color: white;
-}
+
 span.glyphicon.red {
 color: red;
 }
 span.glyphicon.blue {
 color: blue;
 }
-.puzzleItem {
-    list-style: none;
 
-}
 .btn {
 	margin-left: 100px;
 	margin-bottom: 50px;
 }
-.sidebar {
-	background-color: white;
-	color: darkblue;
-	font-size: 32px;
-	font-weight: bolder;	
-}
 
-#col {
-	background-color: white;
-	color: darkblue;
-	font-size: 24px;
-	font-weight: bolder;
-}
+
 p {
 	white-space: pre;
 }
-p.#usedletters {
-	font-style: underline;
-}
-p.#livesRemaining{
-	font-style: underline;
-}
 
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}

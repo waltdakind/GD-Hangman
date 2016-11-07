@@ -7,7 +7,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href=".././assets/css/reset.css">
         
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         
@@ -15,17 +15,14 @@
         
       <!--  <script type="text/javascript" src="assets/javascript/game.js"></script> -->
 
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href=".././assets/css/style.css">
 
         <script>
 window.onload=function(){
   function playHangman() {
   //global variables
 
-        var x;
-        var i;
-        var j;
-        var k;
+        var x, i, j, k;
         var alphabet = ['A', 'B', 'C', 'D',
           'E', 'F', 'G','H','I', 'J', 'K', 
           'L','M', 'N', 'O', 'P', 'Q', 'R', 'S',
@@ -182,7 +179,7 @@ var puzzle = [
 
 var random = Math.floor(Math.random() * puzzle.length);
 console.log(puzzle.length);
-puzzleItem  = puzzleAnswers[random];
+var puzzleItem  = puzzleAnswers[random];
 
 
 

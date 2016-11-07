@@ -24,7 +24,7 @@
 
 function startGame() {
 //reset game counters
-      var numLettersinPuzzleWord = 0;
+      // var numLettersinPuzzleWord = 0;
       var puzzlePlaceholder = [];
       //var incorrectLetters = [];
       var puzzleString = "";
@@ -62,7 +62,7 @@ console.log(puzzlePlaceholder);
 
 var isLetterInWord = false;
 
-for (i=0; i<puzzleLength; i++){
+for (var i=0; i<puzzleLength; i++){
 	if(puzzleAsArrayOfLetters[i] === letter) {
 		isLetterInWord = true;
 	}
@@ -70,16 +70,16 @@ for (i=0; i<puzzleLength; i++){
 
 //repeat check and populate puzzlePlaceholder array
 if(isLetterInWord) {
-     for (i=0; i<puzzleLength; i++) {
-	     if(puzzleAsArrayOfLetters[i] === letter) {
-		  puzzlePlaceholder[i] = letter;
+     for (var k=0; k<puzzleLength; k++) {
+	     if(puzzleAsArrayOfLetters[k] === letter) {
+		  puzzlePlaceholder[k] = letter;
 	      }
         }
     }
 // letter wasn't found
     else {
-	incorrectLetters.push(letter);
-	
+	    incorrectLetters.push(letter);
+        lettersNotInPuzzle.push(letter);
 	guessesRemaining--;
     }
 
@@ -110,7 +110,7 @@ document.getElementById("lettersNotInPuzzle").innerHTML = incorrectLetters;
 document.getElementById("guessesRemaining").innerHTML = guessesRemaining;
 document.getElementById("winCounter").innerHTML = winCounter;
 document.getElementById("lossCounter").innerHTML = lossCounter; 
-};
+}
 
 //Main Process
 //===================================================================================
@@ -127,23 +127,7 @@ document.onkeyup = function(event) {
 
 
 
+console.log(hangmanImage);
+console.log(lettersNotInPuzzle);
 
 
-
-
-//attempt to test that guess is a letter not a number
-// function isItALetter(letter) {
-// 	var code = letter;
-// if ( ((code >= 65) && (code <= 90)) || ((code >= 97) && (code <= 122)) ) {
-//   // it is a letter -- accept input
-// var inputWasGood = true;
-// console.log(inputWasGood);
-// }
-// else {
-// 	//it ain't a letter -- try again
-// 	var inputWasGood = false;
-// 	console.log(inputWasGood);
-// }
-//check to see if it is a letter with is it a letter function
-// 
-//isItALetter(letter);
