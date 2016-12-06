@@ -1,0 +1,27 @@
+{
+  "name": "GD-Hangman",
+  "version": "1.0.0",
+  "description": "Grateful Dead themed hangman game.",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waltdakind/GD-Hangman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waltdakind/GD-Hangman/issues"
+  },
+  "homepage": "https://github.com/waltdakind/GD-Hangman#readme"
+}
