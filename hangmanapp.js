@@ -1,5 +1,6 @@
 const keypress = require('keypress');
-
+// make `process.stdin` begin emitting "keypress" events
+keypress(process.stdin);
 // namespace-ish kinda thing
 if (typeof HANGMANAPP === "undefined") {
     let HANGMANAPP = {};
@@ -119,18 +120,22 @@ HANGMANAPP.indices(HANGMANAPP.stringToArray(HANGMANAPP.a), "a")
 //same letter for array here
 console.log(HANGMANAPP.revealLetter(HANGMANAPP.arrayWithBlanks, HANGMANAPP.indices, "a"));
 
-
-// make `process.stdin` begin emitting "keypress" events
-keypress(process.stdin);
-
 // listen for the "keypress" event
-process.stdin.on('keypress', function (ch, key) {
-  console.log('got "keypress"', key);
+HANGMANAPP.listener = ()=> {
+	process.stdin.on('keypress', function (ch, key) {
+            let res = String(ch);            
+// 95-122 or 65-90
+let resNumber= res.charCodeAt(0);
+// console.log(res + " is " +resNumber);
+if( ( resNumber>96 && resNumber<123) ||( resNumber>64 && resNumber<91 ) ){
+HANGMANAPP.playerGuess = res.toUpperCase();	
+console.log('player guess = ', HANGMANAPP.playerGuess);
+}
   if (key && key.ctrl && key.name == 'c') {
     process.stdin.pause();
   }
 });
-
 process.stdin.setRawMode(true);
 process.stdin.resume();
-
+}
+HANGMANAPP.listener(); 
