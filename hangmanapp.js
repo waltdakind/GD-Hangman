@@ -54,7 +54,7 @@ HANGMANAPP= {
                 "THE WEIGHT", "WEREWOLVES OF LONDON",
                 "YOU DON'T LOVE ME", "YOU WIN AGAIN",
                 "MYSTERY TRAIN", "CRYPTICAL ENVELOPMENT", "GENTLEMEN START YOUR ENGINES"
-            ];,
+            ],
 	"randomChoice": function() {
 		return HANGMANAPP.arrayToTest[Math.floor(Math.random() *HANGMANAPP.arrayToTest.length)];
 	},
