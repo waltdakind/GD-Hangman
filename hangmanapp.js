@@ -10,6 +10,7 @@ if (typeof HANGMANAPP === "undefined") {
 HANGMANAPP= {
 	"a": "BOBBY SHORTS", //sample string
 	"winCount": 0,
+	"lossCount": 0,
 	"solutionsArray" : ["BOX OF RAIN", "ROBERT HUNTER",
                 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
                 "MONEY FOR GASOLINE", "BOB DYLAN",
@@ -57,16 +58,21 @@ HANGMANAPP= {
                 "MYSTERY TRAIN", "CRYPTICAL ENVELOPMENT", "GENTLEMEN START YOUR ENGINES"
             ],
             "stringToArray": (str) => str.split(""),
-            "underscoreTheArray": (arr)  => {
-for (let i = 0; i < arr.length; i++){
-	if (arr[i] != " ") {
-		HANGMANAPP.arrayWithBlanks.push("_");
-	}
-	else {
+            "underscoreTheArray": ()  => {
+            	// charCode(32)  is space
+             // charCode(222)  is apostrophe
+for (let i = 0; i < HANGMANAPP.a.length; i++){
+	if (HANGMANAPP.a[i] == " ") {
 		HANGMANAPP.arrayWithBlanks.push(" ");
-	}		
+	}
+	else if(HANGMANAPP.a[i] == "'") {
+		console.log("apostrophe");
+		HANGMANAPP.arrayWithBlanks.push("'");			
+	}	
+		else if(HANGMANAPP.a[i] !== " ") {
+		HANGMANAPP.arrayWithBlanks.push("_");	
+	}	
 }
-return HANGMANAPP.arrayWithBlanks;
 },
 	"randomChoice": () => {
 		return HANGMANAPP.solutionsArray[Math.floor(Math.random() *HANGMANAPP.solutionsArray.length)];
@@ -79,43 +85,77 @@ return HANGMANAPP.arrayWithBlanks;
             HANGMANAPP.indices.push(i);
                  return HANGMANAPP.indices;
 },
-"revealLetter": (arr, slots, char)=>{
+"revealLetter": (slots, char)=>{
 //array is the array with blanks = arrayWithBlanks
 //slots should be the indices returned from the indices function = indices
 // char is the value to insert at the various indices = a single character
 //array.splice(val, 1, char);
 for(let i = 0; i<slots.length; i++) {
-HANGMANAPP.revealed = arr.splice(slots[i],1,char);	
+HANGMANAPP.revealed = HANGMANAPP.arrayWithBlanks.splice(slots[i],1,char);	
 }
 return HANGMANAPP.arrayWithBlanks;
 },
+"lettersGuessed":[],
 "evaluateGuess": (char) => {
  	//if in puzzle call revealLetter function, otherwise increment incorrect guesses
- 	if(HANGMANAPP.a.indexOf(char) !== -1){
- 		HANGMANAPP.revealLetter(HANGMANAPP.arrayWithBlanks, HANGMANAPP.indices,char);
- 		console.log(HANGMANAPP.revealLetter(HANGMANAPP.arrayWithBlanks, HANGMANAPP.indices, char));
+ 	if((HANGMANAPP.a.indexOf(char) !== -1) && (HANGMANAPP.lettersGuessed.indexOf(char) == -1)){
+ 		HANGMANAPP.revealLetter(HANGMANAPP.indices,char);
+ 		HANGMANAPP.lettersGuessed.push(char);
+ 		console.log(HANGMANAPP.revealLetter(HANGMANAPP.indices, char));
  	}
- 	else {
- 		console.log(" incorrect guesses:" + HANGMANAPP.incorrectGuesses++);
+ 	else if (HANGMANAPP.lettersGuessed.indexOf(char) == -1) { //only add to incorrect guesses for new guesses
+ 		HANGMANAPP.incorrectGuesses++
+ 		console.log(" incorrect guesses:" + HANGMANAPP.incorrectGuesses);
  	}
  },
 	"totalGamesPlayed":0,
-	"incorrectGuesses": 1,
-	"arrayWithBlanks": []
+	"incorrectGuesses": 0,
+	"arrayWithBlanks": [],
+	"youHaveLost": //function to see if incorrect guesses exceeds 8
+	(val) => {
+		if(val>=8){
+			HANGMANAPP.totalGamesPlayed++;
+			HANGMANAPP.lossCount++;
+
+			return true;
+		}
+		else {
+			return false;
+		}
+
+	},
+	"youHaveWon": //function to see if underscores remain in array
+	(arr) => {
+		if(arr.indexOf("_")!== -1){
+			return false;
+		}
+		else {
+			HANGMANAPP.totalGamesPlayed++;
+			HANGMANAPP.winCount++;
+			HANGMANAPP.incorrectGuesses = 0;
+			return true;
+		}
+
+	}
 };
 
-
-//replace "avocado string" with a puzzle solution
-HANGMANAPP.a = HANGMANAPP.randomChoice();
-console.log(HANGMANAPP.stringToArray(HANGMANAPP.a));
-
+//new puzzle
+HANGMANAPP.restart = () => {
+	HANGMANAPP.incorrectGuesses = 0;
+	HANGMANAPP.lettersGuessed =[];
+               HANGMANAPP.a = HANGMANAPP.randomChoice();
+               HANGMANAPP.underscoreTheArray();
+//console.log("solution:  " + HANGMANAPP.stringToArray(HANGMANAPP.a));
 //call the underscoring function on the string to array function (on the solution string)
-HANGMANAPP.underscoreTheArray(HANGMANAPP.stringToArray(HANGMANAPP.a));
+console.log("underscoreArray:   " + HANGMANAPP.arrayWithBlanks);
+}
+HANGMANAPP.restart();
+
 
 // letter for slots here
 // HANGMANAPP.indices(HANGMANAPP.stringToArray(HANGMANAPP.a), "a")
 // same letter for array here
-// console.log(HANGMANAPP.revealLetter(HANGMANAPP.arrayWithBlanks, HANGMANAPP.indices, "a"));
+// console.log(HANGMANAPP.revealLetter(HANGMANAPP.indices, "a"));
 
 // listen for the "keypress" event
 HANGMANAPP.listener = ()=> {
@@ -132,6 +172,19 @@ return res.toUpperCase();
 }
  }
  lettersOnly();
+ if(HANGMANAPP.youHaveLost(HANGMANAPP.incorrectGuesses)){
+console.log("Game over. You didn't solve the puzzle in time.");
+//start a new game
+console.log("You have played " + HANGMANAPP.totalGamesPlayed + " games, and have solved "+ HANGMANAPP.winCount + " of them.");
+ }
+  if(HANGMANAPP.youHaveWon(HANGMANAPP.arrayWithBlanks)){
+console.log("Game over. You solved the puzzle!");
+console.log("You have played " + HANGMANAPP.totalGamesPlayed + " games, and have solved "+ HANGMANAPP.winCount + " of them.");
+//start a new game
+HANGMANAPP.arrayWithBlanks = [];
+
+HANGMANAPP.restart();
+ }
  HANGMANAPP.slots(HANGMANAPP.a, HANGMANAPP.playerGuess);
  HANGMANAPP.evaluateGuess(HANGMANAPP.playerGuess);
   if (key && key.ctrl && key.name == 'c') {
