@@ -142,6 +142,7 @@ return HANGMANAPP.arrayWithBlanks;
 //new puzzle
 HANGMANAPP.restart = () => {
 	HANGMANAPP.incorrectGuesses = 0;
+	HANGMANAPP.arrayWithBlanks = [];
 	HANGMANAPP.lettersGuessed =[];
                HANGMANAPP.a = HANGMANAPP.randomChoice();
                HANGMANAPP.underscoreTheArray();
@@ -176,13 +177,12 @@ return res.toUpperCase();
 console.log("Game over. You didn't solve the puzzle in time.");
 //start a new game
 console.log("You have played " + HANGMANAPP.totalGamesPlayed + " games, and have solved "+ HANGMANAPP.winCount + " of them.");
+	 HANGMANAPP.restart();
  }
   if(HANGMANAPP.youHaveWon(HANGMANAPP.arrayWithBlanks)){
 console.log("Game over. You solved the puzzle!");
 console.log("You have played " + HANGMANAPP.totalGamesPlayed + " games, and have solved "+ HANGMANAPP.winCount + " of them.");
 //start a new game
-HANGMANAPP.arrayWithBlanks = [];
-
 HANGMANAPP.restart();
  }
  HANGMANAPP.slots(HANGMANAPP.a, HANGMANAPP.playerGuess);
