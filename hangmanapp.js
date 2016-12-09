@@ -1,16 +1,16 @@
 const keypress = require('keypress');
 // make `process.stdin` begin emitting "keypress" events
 keypress(process.stdin);
+
 // namespace-ish kinda thing
 if (typeof HANGMANAPP === "undefined") {
     let HANGMANAPP = {};
 }
-
 // Initial values
 HANGMANAPP= {
-	"a": "avocado is tasty",
+	"a": "BOBBY SHORTS", //sample string
 	"winCount": 0,
-	"arrayToTest" : ["BOX OF RAIN", "ROBERT HUNTER",
+	"solutionsArray" : ["BOX OF RAIN", "ROBERT HUNTER",
                 "JOHN BARLOW", "PIGPEN", "TOUCH OF GREY",
                 "MONEY FOR GASOLINE", "BOB DYLAN",
                 "WHEN I PAINT MY MASTERPIECE", "ESTIMATED PROPHET",
@@ -56,22 +56,8 @@ HANGMANAPP= {
                 "YOU DON'T LOVE ME", "YOU WIN AGAIN",
                 "MYSTERY TRAIN", "CRYPTICAL ENVELOPMENT", "GENTLEMEN START YOUR ENGINES"
             ],
-	"randomChoice": function() {
-		return HANGMANAPP.arrayToTest[Math.floor(Math.random() *HANGMANAPP.arrayToTest.length)];
-	},
-	"totalGamesPlayed":0,
-	"arrayWithBlanks": []
-};
-
-// split a string into an array
- HANGMANAPP.stringToArray =  (str) => str.split("");
-
-//TEST show string and array resulting from function above
-console.log(HANGMANAPP.a);
-console.log(HANGMANAPP.stringToArray(HANGMANAPP.a));
-console.log(HANGMANAPP.randomChoice());
-//create a copy of the original array with underscores replacing letters, but ignoring blanks
-HANGMANAPP.underscoreTheArray = (arr)  => {
+            "stringToArray": (str) => str.split(""),
+            "underscoreTheArray": (arr)  => {
 for (let i = 0; i < arr.length; i++){
 	if (arr[i] != " ") {
 		HANGMANAPP.arrayWithBlanks.push("_");
@@ -80,57 +66,74 @@ for (let i = 0; i < arr.length; i++){
 		HANGMANAPP.arrayWithBlanks.push(" ");
 	}		
 }
-//test to see if this array looks as it should
-// console.log(HANGMANAPP.arrayWithBlanks);
 return HANGMANAPP.arrayWithBlanks;
-}
-//call the underscoring function on the string to array function (on the solution string)
-HANGMANAPP.underscoreTheArray(HANGMANAPP.stringToArray(HANGMANAPP.a));
-
-//TODO:  keypress listener here
-
-//find all the indices for a given letter in an array of letters
- HANGMANAPP.indices = (arr, val)=> {
+},
+	"randomChoice": () => {
+		return HANGMANAPP.solutionsArray[Math.floor(Math.random() *HANGMANAPP.solutionsArray.length)];
+	},
+            "slots": (arr, val)=> {
  	let i = 0;
-     HANGMANAPP.indices = [], i;
-    for(i = 0; i < arr.length; i++)
-        if (arr[i] === val)
+             HANGMANAPP.indices = [], i;
+             for(i = 0; i < arr.length; i++)
+                 if (arr[i] === val)
             HANGMANAPP.indices.push(i);
-    return HANGMANAPP.indices;
-}
-//test that array returned is correct
-//console.log(HANGMANAPP.indices(HANGMANAPP.stringToArray(HANGMANAPP.a), "a"));
-// console.log(indices(HANGMANAPP.stringToArray(HANGMANAPP.a), "v"));
-// console.log(indices(HANGMANAPP.stringToArray(HANGMANAPP.a), "s"));
-// function to replace underscores with letters in the original array
-HANGMANAPP.revealLetter = (arr, slots, char)=>{
+                 return HANGMANAPP.indices;
+},
+"revealLetter": (arr, slots, char)=>{
 //array is the array with blanks = arrayWithBlanks
 //slots should be the indices returned from the indices function = indices
 // char is the value to insert at the various indices = a single character
 //array.splice(val, 1, char);
-
 for(let i = 0; i<slots.length; i++) {
 HANGMANAPP.revealed = arr.splice(slots[i],1,char);	
 }
-
 return HANGMANAPP.arrayWithBlanks;
+},
+"evaluateGuess": (char) => {
+ 	//if in puzzle call revealLetter function, otherwise increment incorrect guesses
+ 	if(HANGMANAPP.a.indexOf(char) !== -1){
+ 		HANGMANAPP.revealLetter(HANGMANAPP.arrayWithBlanks, HANGMANAPP.indices,char);
+ 		console.log(HANGMANAPP.revealLetter(HANGMANAPP.arrayWithBlanks, HANGMANAPP.indices, char));
+ 	}
+ 	else {
+ 		console.log(" incorrect guesses:" + HANGMANAPP.incorrectGuesses++);
+ 	}
+ },
+	"totalGamesPlayed":0,
+	"incorrectGuesses": 1,
+	"arrayWithBlanks": []
 };
-//letter for slots here
-HANGMANAPP.indices(HANGMANAPP.stringToArray(HANGMANAPP.a), "a")
-//same letter for array here
-console.log(HANGMANAPP.revealLetter(HANGMANAPP.arrayWithBlanks, HANGMANAPP.indices, "a"));
+
+
+//replace "avocado string" with a puzzle solution
+HANGMANAPP.a = HANGMANAPP.randomChoice();
+console.log(HANGMANAPP.stringToArray(HANGMANAPP.a));
+
+//call the underscoring function on the string to array function (on the solution string)
+HANGMANAPP.underscoreTheArray(HANGMANAPP.stringToArray(HANGMANAPP.a));
+
+// letter for slots here
+// HANGMANAPP.indices(HANGMANAPP.stringToArray(HANGMANAPP.a), "a")
+// same letter for array here
+// console.log(HANGMANAPP.revealLetter(HANGMANAPP.arrayWithBlanks, HANGMANAPP.indices, "a"));
 
 // listen for the "keypress" event
 HANGMANAPP.listener = ()=> {
 	process.stdin.on('keypress', function (ch, key) {
             let res = String(ch);            
+let lettersOnly = () =>{
 // 95-122 or 65-90
 let resNumber= res.charCodeAt(0);
 // console.log(res + " is " +resNumber);
 if( ( resNumber>96 && resNumber<123) ||( resNumber>64 && resNumber<91 ) ){
 HANGMANAPP.playerGuess = res.toUpperCase();	
 console.log('player guess = ', HANGMANAPP.playerGuess);
+return res.toUpperCase();
 }
+ }
+ lettersOnly();
+ HANGMANAPP.slots(HANGMANAPP.a, HANGMANAPP.playerGuess);
+ HANGMANAPP.evaluateGuess(HANGMANAPP.playerGuess);
   if (key && key.ctrl && key.name == 'c') {
     process.stdin.pause();
   }
