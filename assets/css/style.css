@@ -26,7 +26,6 @@ nav {
     background-size: 50px 50px;
 	text-align: justify-all;
 	font-size: 24px;
-	margin-left: 50px;
 	height: 100px;
 }
 
@@ -38,7 +37,7 @@ color: blue;
 }
 
 .btn {
-	margin-left: 100px;
+
 	margin-bottom: 50px;
 }
 

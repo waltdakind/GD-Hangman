@@ -104,7 +104,8 @@ return HANGMANAPP.arrayWithBlanks;
  		console.log(HANGMANAPP.revealLetter(HANGMANAPP.indices, char));
  	}
  	else if (HANGMANAPP.lettersGuessed.indexOf(char) == -1) { //only add to incorrect guesses for new guesses
- 		HANGMANAPP.incorrectGuesses++
+ 		HANGMANAPP.incorrectGuesses++;
+ 		HANGMANAPP.lettersGuessed.push(char);
  		console.log(" incorrect guesses:" + HANGMANAPP.incorrectGuesses);
  	}
  },
@@ -114,6 +115,7 @@ return HANGMANAPP.arrayWithBlanks;
 	"youHaveLost": //function to see if incorrect guesses exceeds 8
 	(val) => {
 		if(val>=8){
+			process.stdin.pause();
 			HANGMANAPP.totalGamesPlayed++;
 			HANGMANAPP.lossCount++;
 
@@ -130,6 +132,7 @@ return HANGMANAPP.arrayWithBlanks;
 			return false;
 		}
 		else {
+			process.stdin.pause();
 			HANGMANAPP.totalGamesPlayed++;
 			HANGMANAPP.winCount++;
 			HANGMANAPP.incorrectGuesses = 0;
@@ -141,11 +144,17 @@ return HANGMANAPP.arrayWithBlanks;
 
 //new puzzle
 HANGMANAPP.restart = () => {
-	HANGMANAPP.incorrectGuesses = 0;
-	HANGMANAPP.arrayWithBlanks = [];
+	process.stdin.pause();
+	if (HANGMANAPP.totalGamesPlayed==0){
+	HANGMANAPP.incorrectGuesses = 0;	
+	}
+	else{
+	HANGMANAPP.incorrectGuesses = -1;	
+	}
 	HANGMANAPP.lettersGuessed =[];
                HANGMANAPP.a = HANGMANAPP.randomChoice();
                HANGMANAPP.underscoreTheArray();
+               process.stdin.resume();
 //console.log("solution:  " + HANGMANAPP.stringToArray(HANGMANAPP.a));
 //call the underscoring function on the string to array function (on the solution string)
 console.log("underscoreArray:   " + HANGMANAPP.arrayWithBlanks);
@@ -166,9 +175,11 @@ let lettersOnly = () =>{
 // 95-122 or 65-90
 let resNumber= res.charCodeAt(0);
 // console.log(res + " is " +resNumber);
+console.log(" Previously guessed letters:  " + HANGMANAPP.lettersGuessed);
 if( ( resNumber>96 && resNumber<123) ||( resNumber>64 && resNumber<91 ) ){
 HANGMANAPP.playerGuess = res.toUpperCase();	
-console.log('player guess = ', HANGMANAPP.playerGuess);
+console.log('Current guess = ', HANGMANAPP.playerGuess);
+console.log("Incorrect guesses: " + HANGMANAPP.incorrectGuesses +  "   You have " + (8 - HANGMANAPP.incorrectGuesses) + " guesses left.");
 return res.toUpperCase();
 }
  }
@@ -177,12 +188,13 @@ return res.toUpperCase();
 console.log("Game over. You didn't solve the puzzle in time.");
 //start a new game
 console.log("You have played " + HANGMANAPP.totalGamesPlayed + " games, and have solved "+ HANGMANAPP.winCount + " of them.");
-	 HANGMANAPP.restart();
+ HANGMANAPP.restart();
  }
   if(HANGMANAPP.youHaveWon(HANGMANAPP.arrayWithBlanks)){
 console.log("Game over. You solved the puzzle!");
 console.log("You have played " + HANGMANAPP.totalGamesPlayed + " games, and have solved "+ HANGMANAPP.winCount + " of them.");
 //start a new game
+HANGMANAPP.arrayWithBlanks = [];
 HANGMANAPP.restart();
  }
  HANGMANAPP.slots(HANGMANAPP.a, HANGMANAPP.playerGuess);
@@ -195,3 +207,5 @@ process.stdin.setRawMode(true);
 process.stdin.resume();
 }
 HANGMANAPP.listener(); 
+
+//fix incorrect guess count being at 1 at start of new game
