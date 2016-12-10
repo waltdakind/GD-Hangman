@@ -203,7 +203,8 @@ HANGMANAPP.restart();
     process.stdin.pause();
   }
 });
-process.stdin.setRawMode(true);
+
+//process.stdin.setRawMode(true);
 process.stdin.resume();
 }
 HANGMANAPP.listener(); 
