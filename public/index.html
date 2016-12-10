@@ -1,10 +1,94 @@
-<!DOCTYPE = "html">
-<html>
-<title>Postcards of the Hanging</title>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Postcards of the Hanging </title>
 
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!--<script type="text/javascript" src="assets/javascript/game.js"></script>-->
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script type="text/javascript" src="./assets/javascript/game.js"></script>
+</head>
+
+<body>
+<header>
+    <p>It's the same story the crow told me, it's the only one he knows...</p>
+</header>
+<nav>
+
+
+</nav>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <img class="img-responsive" src="assets/images/GDhangman.jpg" alt="Backstage pass Fall '95 tour that never happened">
+            <p>Lives remaining:</p>
+            <p id="livesRemaining"></p>
+            <br>
+            <p>Letters guessed: </p>
+            <p id="usedletters"></p>
+        </div>
+        <div class="col-sm-6 text-left">
+            <h1>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <br>
+                Grateful Dead Hangman
+                <br>
+                <span class="glyphicon glyphicon-flash blue"></span><span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+                <span class="glyphicon glyphicon-flash blue"></span>
+                <span class="glyphicon glyphicon-flash red"></span>
+            </h1>
+            <div class="container">
+                <div class="col-sm-4"><p>Play hangman with a theme about the good ol' Grateful Dead.</p></div>
+
+            </div>
+
+            <a class="btn btn-danger btn-lg" >Start New Game</a>
+            <p class id="puzzleWithBlanks"></p>
+            <hr>
+
+
+        </div>
+        <div class="col-sm-4 sidenav">
+            <p></p>
+            <img class="img-responsive" id = "hangman" src="assets/images/08livesLeft.png" alt="Dancing bears, Bobby hates em.">
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <p>"I can't figure out, if it's the end, or beginning..."</p>
+</footer>
 
 </body>
-
-
 </html>
