@@ -1,32 +1,32 @@
 html {
     height : 100%;
-    font-family : 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
     color : #ffffff;
-    background-image : url(../images/syf128.jpg);
+    background-image : url(../img/syf128.jpg);
     background-size: 50px 50px;
 
 }
 body {
-	color: darkblue;
-	background-color: white;
-	font-family : 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
-
+	       color: darkblue;
+	        background-color: white;
+	       font-family: 'Open Sans', sans-serif;
+               margin:  50px 100px 100px 100px;
+               text-align: center;
 }
 h1 {
+       font-family: 'Nova Script', cursive;
 	text-align: left;
 	background-color: white;
 	color: red;
-		font-size: 18px;
+	font-size: 18px;
 	font-weight: bolder;
-	margin-left: 100px;
+	margin-left: 10px;
 }
 
 nav {
-    background: white url(../images/syf128.jpg);
-    background-size: 50px 50px;
-	text-align: justify-all;
-	font-size: 24px;
-	height: 100px;
+               background: white url(../img/syf128.jpg);
+               background-size: 25px 25px;
+	        font-size: 24px;
+	        height: 100px;
 }
 
 span.glyphicon.red {
@@ -55,31 +55,35 @@ p {
         padding-top: 20px;
         background-color: #f1f1f1;
         height: 100%;
-        text-align: center;
+        
     }
     #hangman {
         max-width:100%;
         height:70%;
     }
-    header {
-    background-color: #555;
-    color: white;
-    padding: 5px;
-        text-align: center;
-}
 
+.rwd-line { display: inline; }
     /* Set black background color, white text and some padding */
-    footer  {
-      background-color: #555;
-      color: white;
-      padding: 5px;
+    footer,  header {
+        background-color: #555;
+        color: gold;
+        padding: 14px;
+        border-radius: 25px;
     }
-    
+            @media screen and (min-width: 768px){
+         .rwd-break { display: none; }
+        }
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
-        padding: 15px;
+        padding: 10px;
+      }
+
+      footer, header {
+        word-wrap: break-word;
       }
       .row.content {height:auto;} 
+      .rwd-break { display: none; }
     }
+}
