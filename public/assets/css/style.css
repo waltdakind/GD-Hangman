@@ -5,6 +5,15 @@ html {
     background-size: 50px 50px;
 
 }
+footer{
+    word-wrap: break-word;
+}
+       header {
+               font-family: 'Nova Script', cursive;
+              font-size: 28px; 
+            
+      }
+
 body {
 	       color: darkblue;
 	        background-color: white;
@@ -13,7 +22,7 @@ body {
                text-align: center;
 }
 h1 {
-       font-family: 'Nova Script', cursive;
+
 	text-align: left;
 	background-color: white;
 	color: red;
@@ -26,7 +35,7 @@ nav {
                background: white url(../img/syf128.jpg);
                background-size: 25px 25px;
 	        font-size: 24px;
-	        height: 100px;
+	        height: 50px;
 }
 
 span.glyphicon.red {
@@ -80,9 +89,6 @@ p {
         padding: 10px;
       }
 
-      footer, header {
-        word-wrap: break-word;
-      }
       .row.content {height:auto;} 
       .rwd-break { display: none; }
     }
