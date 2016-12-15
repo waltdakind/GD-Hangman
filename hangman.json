@@ -1,292 +1,364 @@
 {
-   "hangmanItems":[
-      {
-         "Puzzle":"BOX OF RAIN",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"ROBERT HUNTER",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"JOHN BARLOW",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"PIGPEN",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"TOUCH OF GREY",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"MONEY FOR GASOLINE",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"BOB DYLAN",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"WHEN I PAINT MY MASTERPIECE",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"ESTIMATED PROPHET",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"EYES OF THE WORLD",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"CHINA CAT SUNFLOWER",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"VINCE WELNICK",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"BRUCE HORNSBY",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"DARK STAR",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"AOXOMOXOA",
-         "Hint":"album"
-      },
-      {
-         "Puzzle":"AMERICAN BEAUTY",
-         "Hint":"album"
-      },
-      {
-         "Puzzle":"DONNA JEAN GODCHAUX",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"RIPPLE",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"COMES A TIME",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"BLACK MUDDY RIVER",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"BRENT MYDLAND",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"NASSAU COLISEUM",
-         "Hint":"venue"
-      },
-      {
-         "Puzzle":"GREEK THEATRE",
-         "Hint":"venue"
-      },
-      {
-         "Puzzle":"COW PALACE",
-         "Hint":"venue"
-      },
-      {
-         "Puzzle":"GIANTS STADIUM",
-         "Hint":"venue"
-      },
-      {
-         "Puzzle":"SOLDIER FIELD",
-         "Hint":"venue"
-      },
-      {
-         "Puzzle":"HELL IN A BUCKET",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"QUINN THE ESKIMO",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"FARE THEE WELL",
-         "Hint":"event"
-      },
-      {
-         "Puzzle":"VIOLA LEE BLUES",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"SUGAR MAGNOLIA",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"I NEED A MIRACLE",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"COLD RAIN AND SNOW",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"THE WHEEL",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"EYES OF THE WORLD",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"FIRE ON THE MOUNTAIN",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"GOING DOWN THE ROAD FEELING BAD",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"SHAKEDOWN STREET",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"LOOSE LUCY",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"CHINA DOLL",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"SHIP OF FOOLS",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"BRANFORD MARSALIS",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"CAPITOL THEATRE",
-         "Hint":"venue"
-      },
-      {
-         "Puzzle":"TERRAPIN STATION",
-         "Hint":"album"
-      },
-      {
-         "Puzzle":"SPACE",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"WHARF RAT",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"EASY ANSWERS",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"ALL NEW MINGLEWOOD BLUES",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"VICTIM OR THE CRIME",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"CORRINA",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"PRIDE OF CUCAMONGA",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"NEW SPEEDWAY BOOGIE",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"ONE MORE SATURDAY NIGHT",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"I KNOW YOU RIDER",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"SAMSON AND DELILAH",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"BERTHA",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"RFK STADIUM",
-         "Hint":"venue"
-      },
-      {
-         "Puzzle":"THE DAYS BETWEEN",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"LIBERTY",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"ME AND MY UNCLE",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"GREATEST STORY EVER TOLD",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"MICKEY HART",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"FOOLISH HEART",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"BILL KREUTZMANN",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"STANDING ON THE MOON",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"CRAZY FINGERS",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"IT MUST HAVE BEEN THE ROSES",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"TOM CONSTANTEN",
-         "Hint":"person"
-      },
-      {
-         "Puzzle":"DESOLATION ROW",
-         "Hint":"song"
-      },
-      {
-         "Puzzle":"GO TO HEAVEN",
-         "Hint":"album"
-      },
-      {
-         "Puzzle":"WAKE OF THE FLOOD",
-         "Hint":"album"
-      },
-      {
-         "Puzzle":"IN THE DARK",
-         "Hint":"album"
-      }
-   ]
+  "hangmanItems":[
+    {
+      "Puzzle":"BOX OF RAIN",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"ROBERT HUNTER",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"JOHN BARLOW",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"PIGPEN",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"TOUCH OF GREY",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"MONEY FOR GASOLINE",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"BOB DYLAN",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"WHEN I PAINT MY MASTERPIECE",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"ESTIMATED PROPHET",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"EYES OF THE WORLD",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"CHINA CAT SUNFLOWER",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"VINCE WELNICK",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"BRUCE HORNSBY",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"DARK STAR",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"AOXOMOXOA",
+      "Hint":"album",
+      "url":""
+    },
+    {
+      "Puzzle":"AMERICAN BEAUTY",
+      "Hint":"album",
+      "url":""
+    },
+    {
+      "Puzzle":"DONNA JEAN GODCHAUX",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"RIPPLE",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"COMES A TIME",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"BLACK MUDDY RIVER",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"BRENT MYDLAND",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"NASSAU COLISEUM",
+      "Hint":"venue",
+      "url":""
+    },
+    {
+      "Puzzle":"GREEK THEATRE",
+      "Hint":"venue",
+      "url":""
+    },
+    {
+      "Puzzle":"COW PALACE",
+      "Hint":"venue",
+      "url":""
+    },
+    {
+      "Puzzle":"GIANTS STADIUM",
+      "Hint":"venue",
+      "url":""
+    },
+    {
+      "Puzzle":"SOLDIER FIELD",
+      "Hint":"venue",
+      "url":""
+    },
+    {
+      "Puzzle":"HELL IN A BUCKET",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"QUINN THE ESKIMO",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"FARE THEE WELL",
+      "Hint":"event",
+      "url":""
+    },
+    {
+      "Puzzle":"VIOLA LEE BLUES",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"SUGAR MAGNOLIA",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"I NEED A MIRACLE",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"COLD RAIN AND SNOW",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"THE WHEEL",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"EYES OF THE WORLD",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"FIRE ON THE MOUNTAIN",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"GOING DOWN THE ROAD FEELING BAD",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"SHAKEDOWN STREET",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"LOOSE LUCY",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"CHINA DOLL",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"SHIP OF FOOLS",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"BRANFORD MARSALIS",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"CAPITOL THEATRE",
+      "Hint":"venue",
+      "url":""
+    },
+    {
+      "Puzzle":"TERRAPIN STATION",
+      "Hint":"album",
+      "url":""
+    },
+    {
+      "Puzzle":"SPACE",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"WHARF RAT",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"EASY ANSWERS",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"ALL NEW MINGLEWOOD BLUES",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"VICTIM OR THE CRIME",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"CORRINA",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"PRIDE OF CUCAMONGA",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"NEW SPEEDWAY BOOGIE",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"ONE MORE SATURDAY NIGHT",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"I KNOW YOU RIDER",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"SAMSON AND DELILAH",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"BERTHA",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"RFK STADIUM",
+      "Hint":"venue",
+      "url":""
+    },
+    {
+      "Puzzle":"THE DAYS BETWEEN",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"LIBERTY",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"ME AND MY UNCLE",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"GREATEST STORY EVER TOLD",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"MICKEY HART",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"FOOLISH HEART",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"BILL KREUTZMANN",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"STANDING ON THE MOON",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"CRAZY FINGERS",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"IT MUST HAVE BEEN THE ROSES",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"TOM CONSTANTEN",
+      "Hint":"person",
+      "url":""
+    },
+    {
+      "Puzzle":"DESOLATION ROW",
+      "Hint":"song",
+      "url":""
+    },
+    {
+      "Puzzle":"GO TO HEAVEN",
+      "Hint":"album",
+      "url":""
+    },
+    {
+      "Puzzle":"WAKE OF THE FLOOD",
+      "Hint":"album",
+      "url":""
+    },
+    {
+      "Puzzle":"IN THE DARK",
+      "Hint":"album",
+      "url":""
+    }
+  ]
 }
